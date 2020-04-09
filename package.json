@@ -1,0 +1,43 @@
+{
+  "name": "@algonaut/algo-validation-agent",
+  "version": "0.1.0",
+  "description": "Client validation library for Algorand transaction inputs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "docs:generate": "vuepress-jsdoc --source ./src --dist ./documentation --folder code --title API --exclude *.test.ts,exclude.js",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algonaut/algo-validation-agent.git"
+  },
+  "keywords": [
+    "algorand",
+    "typescript",
+    "validation"
+  ],
+  "author": "@jciruolo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/algonaut/algo-validation-agent/issues"
+  },
+  "homepage": "https://github.com/algonaut/algo-validation-agent#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.1",
+    "babel-jest": "^25.3.0",
+    "jest": "^25.3.0",
+    "typescript": "^3.8.3",
+    "vuepress": "^1.4.0",
+    "vuepress-jsdoc": "^2.1.1"
+  }
+}
