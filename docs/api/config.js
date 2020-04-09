@@ -1,0 +1,1 @@
+exports.fileTree=[{"name":"sum","path":"/sum","fullPath":"./docs/api/sum"}];exports.sidebarTree = (title = 'Mainpage') => ({"/api/":[{"title":"API","collapsable":false,"children":[["",""+title+""],"sum"]}]});

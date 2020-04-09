@@ -7,7 +7,9 @@
     "test": "jest",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "docs:generate": "vuepress-jsdoc --source ./src --dist ./documentation --folder code --title API --exclude *.test.ts,exclude.js",
+    "docs:generate": "vuepress-jsdoc --source ./lib --dist ./docs --folder api --title API Reference --exclude *.test.ts,*.d.ts,exclude.js",
+    "docs:dev": "vuepress dev ./docs",
+    "docs:deploy": "vuepress build ./docs",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
