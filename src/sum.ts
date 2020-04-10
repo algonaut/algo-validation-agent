@@ -1,5 +1,5 @@
 /**
- * Testing a description
+ * Testing another sum description
  * @category Assets
  * @param {number}
  * @param {number}
@@ -8,10 +8,6 @@
  *
  * // Add two numbers
  * sum(2, 3)
- *
- * if (isError(elements)) {
- *   elements = []
- * }
  */
 export function sum(a: number, b: number) {
   return a + b;
