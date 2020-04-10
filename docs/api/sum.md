@@ -7,7 +7,7 @@ title: sum
 <a name="sum"></a>
 
 ## sum(a, b) ⇒ <code>boolean</code>
-Testing a description
+Testing another sum description
 
 **Kind**: global function  
 **Category**: Assets  
@@ -21,8 +21,4 @@ Testing a description
 ```js
 // Add two numbers
 sum(2, 3)
-
-if (isError(elements)) {
-  elements = []
-}
 ```

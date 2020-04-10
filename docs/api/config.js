@@ -1,1 +1,1 @@
-exports.fileTree=[{"name":"sum","path":"/sum","fullPath":"./docs/api/sum"}];exports.sidebarTree = (title = 'Mainpage') => ({"/api/":[{"title":"API","collapsable":false,"children":[["",""+title+""],"sum"]}]});
+exports.fileTree=[{"name":"_index","path":"/_index","fullPath":"./docs/api/_index"},{"name":"sum","path":"/sum","fullPath":"./docs/api/sum"}];exports.sidebarTree = (title = 'Mainpage') => ({"/api/":[{"title":"API","collapsable":false,"children":[["",""+title+""],"_index","sum"]}]});
