@@ -1,18 +1,66 @@
-export declare function assetId(assetId: number): boolean;
-export declare function assetName(assetName: string): boolean;
-export declare function unitName(unitName: string): boolean;
-export declare function assetDecimalPlaces(decimals: string): boolean;
-export declare function defaultFrozen(isFrozen: boolean): boolean;
+/**
+ * Validate total issuance amount when creating an asset
+ * @category Assets
+ * @param {number}
+ * @returns {boolean}
+ */
 export declare function assetTotalIssuance(total: number): boolean;
-export declare function assetUrl(url: string): boolean;
+/**
+ * Validate asset decimal places when creating an asset
+ * @category Assets
+ * @param {number}
+ * @returns {boolean}
+ */
+export declare function assetDecimalPlaces(decimals: number): boolean;
+/**
+ * Validate defaultFrozen has a boolean value when creating an asset
+ * @category Assets
+ * @param {boolean}
+ * @returns {boolean}
+ */
+export declare function defaultFrozen(defaultFrozen: boolean): boolean;
+/**
+ * Validate for a metadata hash string when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
 export declare function assetMetadataHash(hash: string): boolean;
+/**
+ * Validate asset name when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
+export declare function assetName(assetName: string): boolean;
+/**
+ * Validate unit name when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
+export declare function unitName(unitName: string): boolean;
+/**
+ * Validate asset url when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
+export declare function assetUrl(url: string): boolean;
+/**
+ * Validate asset index value
+ * @category Assets
+ * @param {number}
+ * @returns {boolean}
+ */
+export declare function assetIndex(assetIndex: number): boolean;
 declare const _default: {
-    assetId: typeof assetId;
-    assetName: typeof assetName;
-    unitName: typeof unitName;
+    assetTotalIssuance: typeof assetTotalIssuance;
     assetDecimalPlaces: typeof assetDecimalPlaces;
     defaultFrozen: typeof defaultFrozen;
-    assetTotalIssuance: typeof assetTotalIssuance;
+    assetIndex: typeof assetIndex;
+    assetName: typeof assetName;
+    unitName: typeof unitName;
     assetUrl: typeof assetUrl;
     assetMetadataHash: typeof assetMetadataHash;
 };

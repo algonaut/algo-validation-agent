@@ -1,5 +1,5 @@
 import v8n from 'v8n';
-import { maxByteLength } from './custom';
+import { maxByteLength } from './utils/validators';
 
 // For full typing support on the extend function,
 // v8n should use context instead of a global variable
@@ -7,8 +7,12 @@ import { maxByteLength } from './custom';
 // @ts-ignore
 v8n.extend({ maxByteLength });
 
-/** ASSET CREATION & CONFIGURATION */
-
+/**
+ * Validate total issuance amount when creating an asset
+ * @category Assets
+ * @param {number}
+ * @returns {boolean}
+ */
 export function assetTotalIssuance(total: number) {
   return v8n()
     .integer()
@@ -16,6 +20,12 @@ export function assetTotalIssuance(total: number) {
     .test(total);
 }
 
+/**
+ * Validate asset decimal places when creating an asset
+ * @category Assets
+ * @param {number}
+ * @returns {boolean}
+ */
 export function assetDecimalPlaces(decimals: number) {
   return v8n()
     .integer()
@@ -23,12 +33,24 @@ export function assetDecimalPlaces(decimals: number) {
     .test(decimals);
 }
 
+/**
+ * Validate defaultFrozen has a boolean value when creating an asset
+ * @category Assets
+ * @param {boolean}
+ * @returns {boolean}
+ */
 export function defaultFrozen(defaultFrozen: boolean) {
   return v8n()
     .boolean()
     .test(defaultFrozen);
 }
 
+/**
+ * Validate for a metadata hash string when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
 export function assetMetadataHash(hash: string) {
   return v8n()
     .string()
@@ -36,6 +58,12 @@ export function assetMetadataHash(hash: string) {
     .test(hash);
 }
 
+/**
+ * Validate asset name when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
 export function assetName(assetName: string) {
   return v8n()
     .string()
@@ -43,6 +71,12 @@ export function assetName(assetName: string) {
     .test(assetName);
 }
 
+/**
+ * Validate unit name when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
 export function unitName(unitName: string) {
   return v8n()
     .string()
@@ -50,6 +84,12 @@ export function unitName(unitName: string) {
     .test(unitName);
 }
 
+/**
+ * Validate asset url when creating an asset
+ * @category Assets
+ * @param {string}
+ * @returns {boolean}
+ */
 export function assetUrl(url: string) {
   return v8n()
     .string()
@@ -57,8 +97,12 @@ export function assetUrl(url: string) {
     .test(url);
 }
 
-/* ASSET TRANSACTION */
-
+/**
+ * Validate asset index value
+ * @category Assets
+ * @param {number}
+ * @returns {boolean}
+ */
 export function assetIndex(assetIndex: number) {
   return v8n()
     .number()

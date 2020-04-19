@@ -1,6 +1,6 @@
 import v8n from 'v8n';
-import { exactByteLength } from './custom';
-import { ALGORAND_ADDRESS_LENGTH } from './constants';
+import { exactByteLength } from './utils/validators';
+import { ALGORAND_ADDRESS_LENGTH } from './utils/constants';
 
 // For full typing support on the extend function,
 // v8n should use context instead of a global variable
@@ -28,12 +28,12 @@ export function algoAddress(algoAddress: string) {
  * @param {number}
  * @returns {boolean}
  */
-export function txnAmount(txnAmount: number) {
-  return v8n()
-    .number()
-    .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
-    .test(txnAmount);
-}
+// export function txnAmount(txnAmount: number) {
+//   return v8n()
+//     .number()
+//     .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
+//     .test(txnAmount);
+// }
 
 export default {
   algoAddress

@@ -1,5 +1,5 @@
 import { algoAddress } from '../src/core';
-import { VALID_ALGORAND_ADDRESS } from '../src/constants';
+import { VALID_ALGORAND_ADDRESS } from '../src/utils/constants';
 
 test.todo('test address for valid characters');
 
