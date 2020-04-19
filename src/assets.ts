@@ -23,15 +23,13 @@ export function assetDecimalPlaces(decimals: number) {
     .test(decimals);
 }
 
-export function defaultFrozen(isFrozen: boolean) {
+export function defaultFrozen(defaultFrozen: boolean) {
   return v8n()
     .boolean()
-    .test(isFrozen);
+    .test(defaultFrozen);
 }
 
 export function assetMetadataHash(hash: string) {
-  // Length?
-  // Encoding?
   return v8n()
     .string()
     .maxByteLength(32)
@@ -41,7 +39,6 @@ export function assetMetadataHash(hash: string) {
 export function assetName(assetName: string) {
   return v8n()
     .string()
-    .length(1, 32)
     .maxByteLength(32)
     .test(assetName);
 }
@@ -49,12 +46,11 @@ export function assetName(assetName: string) {
 export function unitName(unitName: string) {
   return v8n()
     .string()
-    .length(1, 8)
+    .maxByteLength(8)
     .test(unitName);
 }
 
 export function assetUrl(url: string) {
-  // Length?
   return v8n()
     .string()
     .maxByteLength(32)
@@ -66,6 +62,7 @@ export function assetUrl(url: string) {
 export function assetIndex(assetIndex: number) {
   return v8n()
     .number()
+    .positive()
     .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
     .test(assetIndex);
 }
