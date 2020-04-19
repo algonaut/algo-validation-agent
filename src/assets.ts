@@ -1,33 +1,22 @@
 import v8n from 'v8n';
-import { byteLength } from './custom';
+import { maxByteLength } from './custom';
 
 // For full typing support on the extend function,
 // v8n should use context instead of a global variable
 // Details: https://github.com/imbrn/v8n/issues/28
 // @ts-ignore
-v8n.extend({ byteLength });
+v8n.extend({ maxByteLength });
 
-export function assetId(assetId: number) {
+/** ASSET CREATION & CONFIGURATION */
+
+export function assetTotalIssuance(total: number) {
   return v8n()
-    .number()
-    .test(assetId);
+    .integer()
+    .between(1, Number.MAX_SAFE_INTEGER)
+    .test(total);
 }
 
-export function assetName(assetName: string) {
-  return v8n()
-    .string()
-    .between(1, 32)
-    .test(assetName);
-}
-
-export function unitName(unitName: string) {
-  return v8n()
-    .string()
-    .between(1, 8)
-    .test(unitName);
-}
-
-export function assetDecimalPlaces(decimals: string) {
+export function assetDecimalPlaces(decimals: number) {
   return v8n()
     .integer()
     .between(0, 19)
@@ -40,37 +29,54 @@ export function defaultFrozen(isFrozen: boolean) {
     .test(isFrozen);
 }
 
-export function assetTotalIssuance(total: number) {
-  // Max safe integer?
+export function assetMetadataHash(hash: string) {
+  // Length?
+  // Encoding?
   return v8n()
-    .integer()
-    .between(1, Number.MAX_SAFE_INTEGER)
-    .test(total);
+    .string()
+    .maxByteLength(32)
+    .test(hash);
+}
+
+export function assetName(assetName: string) {
+  return v8n()
+    .string()
+    .length(1, 32)
+    .maxByteLength(32)
+    .test(assetName);
+}
+
+export function unitName(unitName: string) {
+  return v8n()
+    .string()
+    .length(1, 8)
+    .test(unitName);
 }
 
 export function assetUrl(url: string) {
   // Length?
   return v8n()
     .string()
+    .maxByteLength(32)
     .test(url);
 }
 
-export function assetMetadataHash(hash: string) {
-  // Length?
-  // Encoding?
+/* ASSET TRANSACTION */
+
+export function assetIndex(assetIndex: number) {
   return v8n()
-    .string()
-    .length(32)
-    .test(hash);
+    .number()
+    .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
+    .test(assetIndex);
 }
 
 export default {
-  assetId,
-  assetName,
-  unitName,
+  assetTotalIssuance,
   assetDecimalPlaces,
   defaultFrozen,
-  assetTotalIssuance,
+  assetIndex,
+  assetName,
+  unitName,
   assetUrl,
   assetMetadataHash
 };

@@ -1,5 +1,10 @@
 import { TextEncoder } from 'util';
 
-// Custom validator for byteLength
-export const byteLength = (validLength: number) => (val: string) =>
+export const exactByteLength = (validLength: number) => (val: string) =>
   new TextEncoder().encode(val).length === validLength;
+
+export const maxByteLength = (maxLength: number) => (val: string) =>
+  new TextEncoder().encode(val).length <= maxLength;
+
+export const minByteLength = (minLength: number) => (val: string) =>
+  new TextEncoder().encode(val).length >= minLength;

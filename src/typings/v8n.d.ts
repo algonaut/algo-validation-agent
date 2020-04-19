@@ -47,7 +47,9 @@ declare module 'v8n' {
       integer(): Validation;
 
       // Custom rules
-      byteLength(length: number): Validation;
+      minByteLength(min: number): Validation;
+      maxByteLength(max: number): Validation;
+      exactByteLength(expected: number): Validation;
     }
     class Rule {
       constructor(
