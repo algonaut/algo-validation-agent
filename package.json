@@ -1,6 +1,6 @@
 {
   "name": "@algonaut/algo-validation-agent",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "A dead simple client validation library for inputs into the Algorand JS SDK",
   "main": "dist/rollup-plugin-babel.cjs.js",
   "module": "dist/rollup-plugin-babel.esm.js",
@@ -13,11 +13,12 @@
     "type-check:watch": "npm run type-check -- --watch",
     "docs:generate": "vuepress-jsdoc --source ./lib --dist ./docs --folder api --title 'Algo Validation Agent' --exclude *.test.ts,*.d.ts,exclude.js",
     "docs:dev": "vuepress dev ./docs",
-    "docs:deploy": "vuepress build ./docs",
+    "docs:deploy": "npm run docs:generate && vuepress build ./docs",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline && rollup -c",
     "build": "npm run build:types && npm run build:js",
-    "build:all": "npm run test --collectCoverage && npm run build && npm run docs:generate && npm run docs:deploy"
+    "build:all": "npm run test && npm run build && npm run docs:deploy",
+    "release": "np"
   },
   "prettier": {
     "semi": true,
@@ -51,6 +52,7 @@
     "@types/node": "^13.13.0",
     "babel-jest": "^25.3.0",
     "jest": "^25.3.0",
+    "np": "^6.2.1",
     "rollup": "^2.4.0",
     "rollup-plugin-babel": "^4.4.0",
     "typescript": "^3.8.3",
