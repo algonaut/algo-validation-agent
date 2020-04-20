@@ -1,7 +1,8 @@
 # algo-validation-agent
 
 [![algonaut](https://circleci.com/gh/algonaut/algo-validation-agent.svg?style=shield)]()
-![MIT License](https://img.shields.io/github/license/algonaut/algo-validation-agent?label=License)
+[![codecov.io](http://codecov.io/github/algonaut/algo-validation-agent/coverage.svg?branch=master)](http://codecov.io/github/algonaut/algo-validation-agent?branch=master)
+![MIT License](https://img.shields.io/badge/License-MIT-bright.svg)
 
 A dead simple validation library for inputs into the Algorand JS SDK
 
