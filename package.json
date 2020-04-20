@@ -18,7 +18,7 @@
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline && rollup -c",
     "build": "npm run build:types && npm run build:js",
     "build:all": "npm run test && npm run build && npm run docs:deploy",
-    "release": "np --no-publish && npm publish",
+    "release": "np --no-publish && npm publish --access public --dry-run",
     "postrelease": "sh deploy.sh"
   },
   "publishConfig": {
