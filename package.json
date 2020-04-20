@@ -1,6 +1,6 @@
 {
   "name": "@algonaut/algo-validation-agent",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A dead simple client validation library for inputs into the Algorand JS SDK",
   "main": "dist/rollup-plugin-babel.cjs.js",
   "module": "dist/rollup-plugin-babel.esm.js",
