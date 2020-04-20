@@ -17,7 +17,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline && rollup -c",
     "build": "npm run build:types && npm run build:js",
-    "build:all": "npm run test --collectCoverage && npm run build && npm run docs:generate"
+    "build:all": "npm run test --collectCoverage && npm run build && npm run docs:generate && npm run docs:deploy"
   },
   "prettier": {
     "semi": true,
