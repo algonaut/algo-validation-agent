@@ -24,10 +24,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "np": {
-    "yarn": false,
-    "contents": "dist"
-  },
   "prettier": {
     "semi": true,
     "singleQuote": true
