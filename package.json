@@ -2,9 +2,9 @@
   "name": "@algonaut/algo-validation-agent",
   "version": "0.1.0",
   "description": "A dead simple client validation library for inputs into the Algorand JS SDK",
-  "main": "dist/rollup-plugin-babel.cjs.js",
-  "module": "dist/rollup-plugin-babel.esm.js",
-  "browser": "dist/rollup-plugin-babel.iife.js",
+  "main": "dist/algo-validation-agent.cjs.js",
+  "module": "dist/algo-validation-agent.esm.js",
+  "browser": "dist/algo-validation-agent.iife.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
     "test": "jest",
@@ -59,6 +59,7 @@
     "np": "^6.2.1",
     "rollup": "^2.4.0",
     "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^5.3.0",
     "typescript": "^3.8.3",
     "vuepress": "^1.4.0",
     "vuepress-jsdoc": "^2.1.1"
