@@ -50,6 +50,7 @@ declare module 'v8n' {
       minByteLength(min: number): Validation;
       maxByteLength(max: number): Validation;
       exactByteLength(expected: number): Validation;
+      base32CharsOnly(): Validation;
     }
     class Rule {
       constructor(

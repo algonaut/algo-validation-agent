@@ -48,8 +48,6 @@ it('Validates unitName', () => {
   expect(assets.unitName('a'.repeat(9))).toBe(false);
 });
 
-test.todo('validate url shape');
-
 it('Validates assetUrl', () => {
   expect(assets.assetUrl({})).toBe(false);
   expect(assets.assetName('🔥'.repeat(15))).toBe(false);

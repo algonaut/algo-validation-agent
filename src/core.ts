@@ -1,12 +1,12 @@
 import v8n from 'v8n';
-import { exactByteLength } from './utils/validators';
+import { exactByteLength, base32CharsOnly } from './utils/validators';
 import { ALGORAND_ADDRESS_LENGTH } from './utils/constants';
 
 // For full typing support on the extend function,
 // v8n should use context instead of a global variable
 // Details: https://github.com/imbrn/v8n/issues/28
 // @ts-ignore
-v8n.extend({ exactByteLength });
+v8n.extend({ exactByteLength, base32CharsOnly });
 
 /**
  * Test for a valid Algorand address
@@ -19,6 +19,7 @@ export function algoAddress(algoAddress: string) {
     .string()
     .exactByteLength(ALGORAND_ADDRESS_LENGTH)
     .length(ALGORAND_ADDRESS_LENGTH)
+    .base32CharsOnly()
     .test(algoAddress);
 }
 

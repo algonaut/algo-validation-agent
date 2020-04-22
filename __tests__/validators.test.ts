@@ -1,7 +1,9 @@
+import { VALID_ALGORAND_ADDRESS } from '../src/utils/constants';
 import {
   exactByteLength,
   maxByteLength,
-  minByteLength
+  minByteLength,
+  base32CharsOnly
 } from '../src/utils/validators';
 
 it('validates exact byte length', () => {
@@ -23,4 +25,15 @@ it('validates min byte length', () => {
   expect(minByteLength(4)('test')).toBe(true);
   expect(minByteLength(4)('a')).toBe(false);
   expect(minByteLength(5)('🔥')).toBe(false);
+});
+
+it('validates base32 string', () => {
+  const invalidBase32 = 'klajcii298slja018alksdjl';
+  const validBase32Padding = 'AJU3JX7ZIA54EZQ=';
+  const validBase32NoPadding = 'AJU3JX7ZIA54EZQF';
+
+  expect(base32CharsOnly()(invalidBase32)).toBe(false);
+  expect(base32CharsOnly()(validBase32Padding)).toBe(false);
+  expect(base32CharsOnly()(validBase32NoPadding)).toBe(true);
+  expect(base32CharsOnly()(VALID_ALGORAND_ADDRESS)).toBe(true);
 });
