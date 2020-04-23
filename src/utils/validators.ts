@@ -1,4 +1,4 @@
-import { TextEncoder } from 'util';
+import { TextEncoder } from 'fastestsmallesttextencoderdecoder';
 
 export const exactByteLength = (validLength: number) => (val: string) =>
   new TextEncoder().encode(val).length === validLength;

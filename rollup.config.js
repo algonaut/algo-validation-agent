@@ -1,11 +1,12 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
-const name = 'RollupTypeScriptBabel';
+const name = 'AlgoValidationAgent';
 
 export default {
   input: './src/index.ts',
@@ -38,8 +39,18 @@ export default {
       file: pkg.browser,
       format: 'iife',
       name,
+      plugins: [],
 
       // https://rollupjs.org/guide/en#output-globals-g-globals
+      globals: {
+        v8n: 'v8n'
+      }
+    },
+    {
+      file: 'dist/algo-validation-agent.iife.min.js',
+      format: 'iife',
+      name,
+      plugins: [terser()],
       globals: {
         v8n: 'v8n'
       }

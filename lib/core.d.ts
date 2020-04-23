@@ -5,14 +5,13 @@
  * @returns {boolean}
  */
 export declare function algoAddress(algoAddress: string): boolean;
+declare const _default: {
+    algoAddress: typeof algoAddress;
+};
 /**
  * Test for a valid Algorand amount
  * @category Core
  * @param {number}
  * @returns {boolean}
  */
-export declare function txnAmount(txnAmount: number): boolean;
-declare const _default: {
-    algoAddress: typeof algoAddress;
-};
 export default _default;
