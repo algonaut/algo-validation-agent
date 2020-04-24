@@ -52,11 +52,3 @@ it('Validates assetUrl', () => {
   expect(assets.assetUrl({})).toBe(false);
   expect(assets.assetName('🔥'.repeat(15))).toBe(false);
 });
-
-it('Validates assetIndex', () => {
-  expect(assets.assetIndex(1)).toBe(true);
-  expect(assets.assetIndex(Number.MAX_SAFE_INTEGER)).toBe(true);
-  expect(assets.assetIndex(Number.MAX_SAFE_INTEGER + 1)).toBe(false);
-  expect(assets.assetIndex(-1)).toBe(false);
-  expect(assets.assetIndex('1')).toBe(false);
-});

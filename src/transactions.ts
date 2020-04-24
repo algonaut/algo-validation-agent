@@ -1,7 +1,6 @@
 import v8n from 'v8n';
-import { ALGORAND_TRANSACTION_LENGTH } from './utils/constants';
 import { exactByteLength, maxByteLength } from './utils/extensions';
-import { algoAddress } from './core';
+import { algoAddress, assetIndex } from './core';
 
 // For full typing support on the extend function,
 // v8n should use context instead of a global variable
@@ -157,6 +156,24 @@ export function transactionAmount(txnAmount: number) {
 export function closeRemainderTo(address: number) {
   return algoAddress.test(address);
 }
+
+/**
+ * Test for a valid asset id
+ * @category Asset Configuration
+ * @param {number}
+ * @returns {boolean}
+ */
+export function configAsset(address: number) {
+  return assetIndex.test(address);
+}
+
+// INTERIM TODO:
+// Asset Transfer
+// Asset Accept
+// Asset Clawback
+// Asset Freeze
+// Signed Transaction
+// Key Registration Transaction
 
 export default {
   transactionSender,

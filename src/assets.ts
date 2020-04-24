@@ -97,25 +97,10 @@ export function assetUrl(url: string) {
     .test(url);
 }
 
-/**
- * Validate asset index value
- * @category Assets
- * @param {number}
- * @returns {boolean}
- */
-export function assetIndex(assetIndex: number) {
-  return v8n()
-    .number()
-    .positive()
-    .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
-    .test(assetIndex);
-}
-
 export default {
   assetTotalIssuance,
   assetDecimalPlaces,
   defaultFrozen,
-  assetIndex,
   assetName,
   unitName,
   assetUrl,

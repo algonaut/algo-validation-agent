@@ -1,4 +1,3 @@
-import { TextEncoder } from 'fastestsmallesttextencoderdecoder';
 import {
   transactionSender,
   transactionAmount,
@@ -118,7 +117,7 @@ it('Validates transaction amt', () => {
   expect(transactionAmount('12345')).toEqual(false);
 });
 
-it('Validates transaction amt', () => {
+it('Validates transaction closeRemainderTo', () => {
   expect(closeRemainderTo(VALID_ALGORAND_ADDRESS)).toEqual(true);
   expect(closeRemainderTo('test')).toEqual(false);
   expect(closeRemainderTo(true)).toEqual(false);

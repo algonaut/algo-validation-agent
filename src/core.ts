@@ -23,6 +23,11 @@ export const algoTxn = v8n()
   .length(ALGORAND_TRANSACTION_LENGTH)
   .base32CharsOnly();
 
+export const assetIndex = v8n()
+  .number()
+  .positive()
+  .lessThanOrEqual(Number.MAX_SAFE_INTEGER);
+
 /**
  * Test a string for valid Algorand address requirements
  * @category Core
@@ -43,6 +48,21 @@ export function isTransactionId(txId: string) {
   return algoTxn.test(txId);
 }
 
+/**
+ * Test for a valid Algorand asset index
+ * @category Core
+ * @param {number}
+ * @returns {boolean}
+ */
+export function isAssetIndex(assetId: number) {
+  return assetIndex.test(assetId);
+}
+
 export default {
-  algoAddress
+  assetIndex,
+  algoAddress,
+  algoTxn,
+  isAlgorandAddress,
+  isTransactionId,
+  isAssetIndex
 };
