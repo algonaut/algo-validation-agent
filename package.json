@@ -2,10 +2,9 @@
   "name": "@algonaut/algo-validation-agent",
   "version": "0.3.0",
   "description": "A dead simple client validation library for inputs into the Algorand JS SDK",
-  "main": "dist/algo-validation-agent.cjs.js",
-  "module": "dist/algo-validation-agent.esm.js",
-  "browser": "dist/algo-validation-agent.iife.js",
-  "types": "dist/types/index.d.ts",
+  "main": "./dist/algo-validation-agent.cjs.js",
+  "module": "./dist/algo-validation-agent.esm.js",
+  "browser": "./dist/algo-validation-agent.iife.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
