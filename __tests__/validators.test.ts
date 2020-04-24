@@ -4,7 +4,7 @@ import {
   maxByteLength,
   minByteLength,
   base32CharsOnly
-} from '../src/utils/validators';
+} from '../src/utils/extensions';
 
 it('validates exact byte length', () => {
   expect(exactByteLength(4)('test')).toBe(true);
