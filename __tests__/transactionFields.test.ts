@@ -12,7 +12,15 @@ import {
   transactionReceiver,
   closeRemainderTo
 } from '../src/transactionFields';
-import { VALID_ALGORAND_ADDRESS } from '../src/utils/constants';
+import {
+  VALID_ALGORAND_ADDRESS,
+  MAINNET_GENESIS_ID,
+  TESTNET_GENESIS_ID,
+  BETANET_GENESIS_ID,
+  MAINNET_GENESIS_HASH,
+  TESTNET_GENESIS_HASH,
+  BETANET_GENESIS_HASH
+} from '../src/utils/constants';
 
 it('Validates transactionSender', () => {
   expect(transactionSender(VALID_ALGORAND_ADDRESS)).toEqual(true);
@@ -59,10 +67,6 @@ it('Validates txn note field', () => {
 });
 
 it('Validates genesis id field', () => {
-  const MAINNET_GENESIS_ID = 'mainnet-v1.0';
-  const TESTNET_GENESIS_ID = 'testnet-v1.0';
-  const BETANET_GENESIS_ID = 'betanet-v1.0';
-
   expect(transactionGenesisId(MAINNET_GENESIS_ID)).toEqual(true);
   expect(transactionGenesisId(TESTNET_GENESIS_ID)).toEqual(true);
   expect(transactionGenesisId(BETANET_GENESIS_ID)).toEqual(true);
@@ -71,10 +75,6 @@ it('Validates genesis id field', () => {
 test.todo('Docs say 32 byte length, but all the hashes are larger');
 
 it('Validates genesis hash field', () => {
-  const MAINNET_GENESIS_HASH = 'wGHE2Pwdvd7S12BL5FaOP20EGYesN73ktiC1qzkkit8=';
-  const TESTNET_GENESIS_HASH = 'SGO1GKSzyE7IEPItTxCByw9x8FmnrCDexi9/cOUJOiI=';
-  const BETANET_GENESIS_HASH = 'mFgazF+2uRS1tMiL9dsj01hJGySEmPN28B/TjjvpVW0=';
-
   expect(transactionGenesisHash(MAINNET_GENESIS_HASH)).toEqual(true);
   expect(transactionGenesisHash(TESTNET_GENESIS_HASH)).toEqual(true);
   expect(transactionGenesisHash(BETANET_GENESIS_HASH)).toEqual(true);
@@ -82,7 +82,7 @@ it('Validates genesis hash field', () => {
 
 test.todo('validate group with exact 32-byte string');
 it('Validates group', () => {
-  // expect(transactionGroup(MAINNET_GENESIS_HASH)).toEqual(true);
+  expect(transactionGroup(MAINNET_GENESIS_HASH)).toEqual(true);
 });
 
 it('Validates transactionType', () => {

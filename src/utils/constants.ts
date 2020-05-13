@@ -6,6 +6,17 @@ export const VALID_ALGORAND_ADDRESS =
   'CINCNAPB2RLDUCS3EVDLURZZD742TMWRQEZ4CBEWF2QMOYXMH6RWRZEIEA';
 export const BASE32_RFC_4648_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
+export const MAINNET_GENESIS_ID = 'mainnet-v1.0';
+export const TESTNET_GENESIS_ID = 'testnet-v1.0';
+export const BETANET_GENESIS_ID = 'betanet-v1.0';
+
+export const MAINNET_GENESIS_HASH =
+  'wGHE2Pwdvd7S12BL5FaOP20EGYesN73ktiC1qzkkit8=';
+export const TESTNET_GENESIS_HASH =
+  'SGO1GKSzyE7IEPItTxCByw9x8FmnrCDexi9/cOUJOiI=';
+export const BETANET_GENESIS_HASH =
+  'mFgazF+2uRS1tMiL9dsj01hJGySEmPN28B/TjjvpVW0=';
+
 export const TRANSACTION_TYPES = {
   PAY: 'pay',
   KEYREG: 'keyreg',

@@ -107,7 +107,6 @@ export function transactionGenesisHash(genesisHash: string) {
 export function transactionGroup(genesisHash: string) {
   return v8n()
     .string()
-    .exactByteLength(32)
     .test(genesisHash);
 }
 
@@ -155,16 +154,6 @@ export function transactionAmount(txnAmount: number) {
  */
 export function closeRemainderTo(address: number) {
   return algoAddress.test(address);
-}
-
-/**
- * Test for a valid asset id
- * @category Asset Configuration
- * @param {number}
- * @returns {boolean}
- */
-export function configAsset(address: number) {
-  return assetIndex.test(address);
 }
 
 export default {
