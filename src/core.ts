@@ -28,6 +28,25 @@ export const assetIndex = v8n()
   .positive()
   .lessThanOrEqual(Number.MAX_SAFE_INTEGER);
 
+export const assetCreateParams = v8n().schema({
+  am: v8n().string(),
+  an: v8n().string(),
+  au: v8n().string(),
+  c: algoAddress,
+  dc: v8n().integer(),
+  f: algoAddress,
+  m: algoAddress,
+  r: algoAddress,
+  t: v8n().integer(),
+  un: v8n().string()
+});
+
+export const assetConfigureParams = v8n().schema({
+  c: algoAddress,
+  f: algoAddress,
+  m: algoAddress,
+  r: algoAddress
+});
 /**
  * Test a string for valid Algorand address requirements
  * @category Core
@@ -58,11 +77,27 @@ export function isAssetIndex(assetId: number) {
   return assetIndex.test(assetId);
 }
 
+/**
+ * Test for basic valid Algorand transaction payload shape
+ * @category Core
+ * @param {object}
+ * @returns {boolean}
+ */
+export function isTransactionPayload(txnPayload: object) {
+  const isTxn = v8n().schema({
+    txn: v8n().object()
+  });
+  return isTxn.test(txnPayload);
+}
+
 export default {
   assetIndex,
   algoAddress,
   algoTxn,
+  assetCreateParams,
+  assetConfigureParams,
   isAlgorandAddress,
   isTransactionId,
-  isAssetIndex
+  isAssetIndex,
+  isTransactionPayload
 };

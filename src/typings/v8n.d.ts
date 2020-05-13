@@ -8,7 +8,7 @@ declare module 'v8n' {
 
   namespace v8n {
     // function extend(newRules: { [key: string]: () => boolean }): void;
-
+    interface passesAnyOf {}
     interface Validation {
       chain: Rule[];
       invert?: boolean;
@@ -45,12 +45,16 @@ declare module 'v8n' {
       odd(): Validation;
       includes(expected: any): Validation;
       integer(): Validation;
+      object(): Validation;
+      schema(expected: object): Validation;
+      passesAnyOf(...args: Validation[]): Validation;
 
       // Custom rules
       minByteLength(min: number): Validation;
       maxByteLength(max: number): Validation;
       exactByteLength(expected: number): Validation;
       base32CharsOnly(): Validation;
+      isTransactionPayload(expected: object): Validation;
     }
     class Rule {
       constructor(

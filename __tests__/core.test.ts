@@ -1,4 +1,9 @@
-import { isAlgorandAddress, isAssetIndex, isTransactionId } from '../src/core';
+import {
+  isAlgorandAddress,
+  isAssetIndex,
+  isTransactionId,
+  isTransactionPayload
+} from '../src/core';
 import {
   VALID_ALGORAND_ADDRESS,
   VALID_ALGORAND_TRANSACTION
@@ -25,4 +30,10 @@ it('Validates assetIndex', () => {
   expect(isAssetIndex(Number.MAX_SAFE_INTEGER + 1)).toBe(false);
   expect(isAssetIndex(-1)).toBe(false);
   expect(isAssetIndex('1')).toBe(false);
+});
+
+it('Validates basic transaction schema', () => {
+  expect(isTransactionPayload({})).toBe(false);
+  expect(isTransactionPayload({ foo: {} })).toBe(false);
+  expect(isTransactionPayload({ txn: {} })).toBe(true);
 });
