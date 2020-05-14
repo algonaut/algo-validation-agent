@@ -1,5 +1,5 @@
 import v8n from 'v8n';
-import { maxByteLength } from './utils/validators';
+import { maxByteLength } from './utils/extensions';
 
 // For full typing support on the extend function,
 // v8n should use context instead of a global variable
@@ -97,25 +97,10 @@ export function assetUrl(url: string) {
     .test(url);
 }
 
-/**
- * Validate asset index value
- * @category Assets
- * @param {number}
- * @returns {boolean}
- */
-export function assetIndex(assetIndex: number) {
-  return v8n()
-    .number()
-    .positive()
-    .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
-    .test(assetIndex);
-}
-
 export default {
   assetTotalIssuance,
   assetDecimalPlaces,
   defaultFrozen,
-  assetIndex,
   assetName,
   unitName,
   assetUrl,

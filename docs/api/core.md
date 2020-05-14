@@ -7,40 +7,70 @@ title: core
 ## Members
 
 <dl>
-<dt><a href="#_default">_default</a> ⇒ <code>boolean</code></dt>
-<dd><p>Test for a valid Algorand amount</p>
+<dt><a href="#assetConfigureParams">assetConfigureParams</a> ⇒ <code>boolean</code></dt>
+<dd><p>Test a string for valid Algorand address requirements</p>
 </dd>
 </dl>
 
 ## Functions
 
 <dl>
-<dt><a href="#algoAddress">algoAddress(algoAddress)</a> ⇒ <code>boolean</code></dt>
-<dd><p>Test for a valid Algorand address</p>
+<dt><a href="#isTransactionId">isTransactionId(txId)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Test for a valid Algorand transaction ID</p>
+</dd>
+<dt><a href="#isAssetIndex">isAssetIndex(assetId)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Test for a valid Algorand asset index</p>
+</dd>
+<dt><a href="#isTransactionPayload">isTransactionPayload(txnPayload)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Test for basic valid Algorand transaction payload shape</p>
 </dd>
 </dl>
 
-<a name="_default"></a>
+<a name="assetConfigureParams"></a>
 
-## \_default ⇒ <code>boolean</code>
-Test for a valid Algorand amount
+## assetConfigureParams ⇒ <code>boolean</code>
+Test a string for valid Algorand address requirements
 
 **Kind**: global variable  
 **Category**: Core  
 
-| Type |
-| --- |
-| <code>number</code> | 
+| Param | Type |
+| --- | --- |
+|  | <code>string</code> | 
 
-<a name="algoAddress"></a>
+<a name="isTransactionId"></a>
 
-## algoAddress(algoAddress) ⇒ <code>boolean</code>
-Test for a valid Algorand address
+## isTransactionId(txId) ⇒ <code>boolean</code>
+Test for a valid Algorand transaction ID
 
 **Kind**: global function  
 **Category**: Core  
 
 | Param | Type |
 | --- | --- |
-| algoAddress | <code>string</code> | 
+| txId | <code>string</code> | 
+
+<a name="isAssetIndex"></a>
+
+## isAssetIndex(assetId) ⇒ <code>boolean</code>
+Test for a valid Algorand asset index
+
+**Kind**: global function  
+**Category**: Core  
+
+| Param | Type |
+| --- | --- |
+| assetId | <code>number</code> | 
+
+<a name="isTransactionPayload"></a>
+
+## isTransactionPayload(txnPayload) ⇒ <code>boolean</code>
+Test for basic valid Algorand transaction payload shape
+
+**Kind**: global function  
+**Category**: Core  
+
+| Param | Type |
+| --- | --- |
+| txnPayload | <code>object</code> | 
 

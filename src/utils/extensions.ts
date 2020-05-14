@@ -10,7 +10,7 @@ export const minByteLength = (minLength: number) => (val: string) =>
   new TextEncoder().encode(val).length >= minLength;
 
 export const base32CharsOnly = () => (val: string) => {
-  // Algorand strips off padding and
+  // Algorand strips off padding and doesn't adhere to multiples of 8 length constraint
   const b32_regex = new RegExp(/^[A-Z2-7]*$/);
   return b32_regex.test(val);
 };
