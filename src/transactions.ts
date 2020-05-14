@@ -14,7 +14,7 @@ import { TRANSACTION_TYPES } from './utils/constants';
  * @param {object}
  * @returns {boolean}
  */
-export function payment(txn: object) {
+export function payment(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -41,7 +41,7 @@ export function payment(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function close(txn: object) {
+export function close(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -67,7 +67,7 @@ export function close(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function registerKeyOnline(txn: object) {
+export function registerKeyOnline(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -95,7 +95,7 @@ export function registerKeyOnline(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function registerKeyOffline(txn: object) {
+export function registerKeyOffline(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -118,7 +118,7 @@ export function registerKeyOffline(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function assetCreate(txn: object) {
+export function assetCreate(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -142,7 +142,7 @@ export function assetCreate(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function assetConfigure(txn: object) {
+export function assetConfigure(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -167,7 +167,7 @@ export function assetConfigure(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function assetDestroy(txn: object) {
+export function assetDestroy(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -191,7 +191,7 @@ export function assetDestroy(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function assetOptIn(txn: object) {
+export function assetOptIn(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -216,7 +216,7 @@ export function assetOptIn(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function assetTransfer(txn: object) {
+export function assetTransfer(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -242,7 +242,7 @@ export function assetTransfer(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function assetRevoke(txn: object) {
+export function assetRevoke(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }
@@ -269,7 +269,7 @@ export function assetRevoke(txn: object) {
  * @param {object}
  * @returns {boolean}
  */
-export function assetFreeze(txn: object) {
+export function assetFreeze(txn: TransactionPayload) {
   if (!isTransactionPayload(txn)) {
     return false;
   }

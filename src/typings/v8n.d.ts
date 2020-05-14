@@ -9,6 +9,7 @@ declare module 'v8n' {
   namespace v8n {
     // function extend(newRules: { [key: string]: () => boolean }): void;
     interface passesAnyOf {}
+
     interface Validation {
       chain: Rule[];
       invert?: boolean;

@@ -47,6 +47,7 @@ export const assetConfigureParams = v8n().schema({
   m: algoAddress,
   r: algoAddress
 });
+
 /**
  * Test a string for valid Algorand address requirements
  * @category Core

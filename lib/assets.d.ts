@@ -47,18 +47,10 @@ export declare function unitName(unitName: string): boolean;
  * @returns {boolean}
  */
 export declare function assetUrl(url: string): boolean;
-/**
- * Validate asset index value
- * @category Assets
- * @param {number}
- * @returns {boolean}
- */
-export declare function assetIndex(assetIndex: number): boolean;
 declare const _default: {
     assetTotalIssuance: typeof assetTotalIssuance;
     assetDecimalPlaces: typeof assetDecimalPlaces;
     defaultFrozen: typeof defaultFrozen;
-    assetIndex: typeof assetIndex;
     assetName: typeof assetName;
     unitName: typeof unitName;
     assetUrl: typeof assetUrl;
