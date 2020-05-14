@@ -666,10 +666,10 @@ function testSchema(schema) {
   };
 }
 
-var e="undefined"==typeof global?"undefined"===typeof self?{}:self:global,f=String.fromCharCode,g={}.toString,h=e.SharedArrayBuffer,k=h?g.call(h):"",m=e.Uint8Array,n=m?g.call(ArrayBuffer.prototype):"",p=e.Buffer;try{!p&&e.require&&(p=e.require("Buffer"));var q=p.prototype,r=g.call(q);}catch(b){}var t=!!m&&!p,v=!p||!!m&&m.prototype.isPrototypeOf(q),x=w.prototype;
-function y(b){var a=b.charCodeAt(0),c=1114112,d=0,u=b.length|0,l="";switch(a>>>4){case 12:case 13:c=(a&31)<<6|b.charCodeAt(1)&63;d=128>c?0:2;break;case 14:c=(a&15)<<12|(b.charCodeAt(1)&63)<<6|b.charCodeAt(2)&63;d=2048>c?0:3;break;case 15:30===a>>>3&&(c=(a&7)<<18|(b.charCodeAt(1)&63)<<12|(b.charCodeAt(2)&63)<<6|b.charCodeAt(3),d=65536>c?0:4);}d&&(u<d?d=0:65536>c?l=f(c):1114112>c?(c=c-65664|0,l=f((c>>>10)+55296|0,(c&1023)+56320|0)):d=0);for(;d<u;d=d+1|0)l+="\ufffd";return l}function A(b){var a=b&&b.buffer||b,c=g.call(a);if(c!==n&&c!==r&&c!==k&&"[object ArrayBuffer]"!==c&&void 0!==b)throw TypeError("Failed to execute 'decode' on 'TextDecoder': The provided value is not of type '(ArrayBuffer or ArrayBufferView)'");b=v?new m(a):a||[];a="";c=0;for(var d=b.length|0;c<d;c=c+32768|0)a+=f.apply(0,b[v?"subarray":"slice"](c,c+32768|0));return a.replace(/[\xc0-\xff][\x80-\xbf]+|[\x80-\xff]/g,y)}function B(b){var a=b.charCodeAt(0)|0;if(55296<=a&&56319>=a)if(b=b.charCodeAt(1)|0,56320<=b&&57343>=b){if(a=(a<<10)+b-56613888|0,65535<a)return f(240|a>>>18,128|a>>>12&63,128|a>>>6&63,128|a&63)}else a=65533;return 2047>=a?f(192|a>>>6,128|a&63):f(224|a>>>12,128|a>>>6&63,128|a&63)}function w(){}
-function C(b){b=void 0===b?"":(""+b).replace(/[\x80-\uD7ff\uDC00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]?/g,B);for(var a=b.length|0,c=t?new m(a):p.allocUnsafe?p.allocUnsafe(a):new p(a),d=0;d<a;d=d+1|0)c[d]=b.charCodeAt(d)|0;return c}x.encode=C;function D(b,a){var c=b[a];return function(){return c.apply(b,arguments)}}var E=e.TextDecoder,F=e.TextEncoder;
-var TextEncoder=F||w,decode=E?D(new E,"decode"):A,encode=F?D(new F,"encode"):C;
+var a="undefined"==typeof global?"undefined"===typeof self?{}:self:global,m=String.fromCharCode,n={}.toString,q=a.SharedArrayBuffer,t=q?n.call(q):"",u=a.Uint8Array,w=u?n.call(ArrayBuffer.prototype):"",x=a.Buffer;try{!x&&a.require&&(x=a.require("Buffer"));var y=x.prototype,z=n.call(y);}catch(c){}var A=!!u&&!x,B=/[\x80-\uD7ff\uDC00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]?/g,C=new Uint16Array(32),E=!x||!!u&&u.prototype.isPrototypeOf(y),G=F.prototype;function I(c){var b=c&&c.buffer||c,e=n.call(b);if(e!==w&&e!==z&&e!==t&&"[object ArrayBuffer]"!==e&&void 0!==c)throw TypeError("Failed to execute 'decode' on 'TextDecoder': The provided value is not of type '(ArrayBuffer or ArrayBufferView)'");c=E?new u(b):b||[];e=b="";for(var d=0,r=c.length|0,D=r-32|0,v,f,g=0,p=0,k,h=0,l=-1;d<r;){for(v=d<=D?32:r-d|0;h<v;d=d+1|0,h=h+1|0){f=c[d]&255;switch(f>>4){case 15:k=c[d=d+1|0]&255;if(2!==k>>6||247<f){d=d-1|0;break}g=(f&7)<<6|k&63;p=5;f=256;case 14:k=c[d=d+1|0]&
+255,g<<=6,g|=(f&15)<<6|k&63,p=2===k>>6?p+4|0:24,f=f+256&768;case 13:case 12:k=c[d=d+1|0]&255,g<<=6,g|=(f&31)<<6|k&63,p=p+7|0,d<r&&2===k>>6&&g>>p&&1114112>g?(f=g,g=g-65536|0,0<=g&&(l=(g>>10)+55296|0,f=(g&1023)+56320|0,31>h?(C[h]=l,h=h+1|0,l=-1):(k=l,l=f,f=k))):(f>>=8,d=d-f-1|0,f=65533),g=p=0,v=d<=D?32:r-d|0;default:C[h]=f;continue;case 11:case 10:case 9:case 8:}C[h]=65533;}e+=m(C[0],C[1],C[2],C[3],C[4],C[5],C[6],C[7],C[8],C[9],C[10],C[11],C[12],C[13],C[14],C[15],C[16],C[17],C[18],C[19],C[20],C[21],
+C[22],C[23],C[24],C[25],C[26],C[27],C[28],C[29],C[30],C[31]);32>h&&(e=e.slice(0,h-32|0));if(d<r){if(C[0]=l,h=~l>>>31,l=-1,e.length<b.length)continue}else -1!==l&&(e+=m(l));b+=e;e="";}return b}function J(c){var b=c.charCodeAt(0)|0;if(55296<=b&&56319>=b)if(c=c.charCodeAt(1)|0,56320<=c&&57343>=c){if(b=(b<<10)+c-56613888|0,65535<b)return m(240|b>>18,128|b>>12&63,128|b>>6&63,128|b&63)}else b=65533;return 2047>=b?m(192|b>>6,128|b&63):m(224|b>>12,128|b>>6&63,128|b&63)}function F(){}
+function K(c){c=void 0===c?"":(""+c).replace(B,J);for(var b=c.length|0,e=A?new u(b):x.allocUnsafe?x.allocUnsafe(b):new x(b),d=0;d<b;d=d+1|0)e[d]=c.charCodeAt(d)|0;return e}G.encode=K;function L(c,b){var e=c[b];return function(){return e.apply(c,arguments)}}var M=a.TextDecoder,N=a.TextEncoder;var TextEncoder=N||F,decode=M?L(new M,"decode"):I,encode=N?L(new N,"encode"):K;
 
 var exactByteLength = function exactByteLength(validLength) {
   return function (val) {
@@ -683,13 +683,21 @@ var maxByteLength = function maxByteLength(maxLength) {
 };
 var base32CharsOnly = function base32CharsOnly() {
   return function (val) {
-    // Algorand strips off padding and
+    // Algorand strips off padding and doesn't adhere to multiples of 8 length constraint
     var b32_regex = new RegExp(/^[A-Z2-7]*$/);
     return b32_regex.test(val);
   };
 };
 
 var ALGORAND_ADDRESS_LENGTH = 58;
+var ALGORAND_TRANSACTION_LENGTH = 52;
+var TRANSACTION_TYPES = {
+  PAY: 'pay',
+  KEYREG: 'keyreg',
+  ACFG: 'acfg',
+  AXFER: 'axfer',
+  AFRZ: 'afrz'
+};
 
 // v8n should use context instead of a global variable
 // Details: https://github.com/imbrn/v8n/issues/28
@@ -699,31 +707,80 @@ v8n.extend({
   exactByteLength: exactByteLength,
   base32CharsOnly: base32CharsOnly
 });
+var algoAddress = v8n().string().exactByteLength(ALGORAND_ADDRESS_LENGTH).length(ALGORAND_ADDRESS_LENGTH).base32CharsOnly();
+var algoTxn = v8n().string().exactByteLength(ALGORAND_TRANSACTION_LENGTH).length(ALGORAND_TRANSACTION_LENGTH).base32CharsOnly();
+var assetIndex = v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER);
+var assetCreateParams = v8n().schema({
+  am: v8n().string(),
+  an: v8n().string(),
+  au: v8n().string(),
+  c: algoAddress,
+  dc: v8n().integer(),
+  f: algoAddress,
+  m: algoAddress,
+  r: algoAddress,
+  t: v8n().integer(),
+  un: v8n().string()
+});
+var assetConfigureParams = v8n().schema({
+  c: algoAddress,
+  f: algoAddress,
+  m: algoAddress,
+  r: algoAddress
+});
 /**
- * Test for a valid Algorand address
+ * Test a string for valid Algorand address requirements
  * @category Core
  * @param {string}
  * @returns {boolean}
  */
 
-function algoAddress(algoAddress) {
-  return v8n().string().exactByteLength(ALGORAND_ADDRESS_LENGTH).length(ALGORAND_ADDRESS_LENGTH).base32CharsOnly().test(algoAddress);
+function isAlgorandAddress(input) {
+  return algoAddress.test(input);
 }
 /**
- * Test for a valid Algorand amount
+ * Test for a valid Algorand transaction ID
+ * @category Core
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function isTransactionId(txId) {
+  return algoTxn.test(txId);
+}
+/**
+ * Test for a valid Algorand asset index
  * @category Core
  * @param {number}
  * @returns {boolean}
  */
-// export function txnAmount(txnAmount: number) {
-//   return v8n()
-//     .number()
-//     .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
-//     .test(txnAmount);
-// }
 
+function isAssetIndex(assetId) {
+  return assetIndex.test(assetId);
+}
+/**
+ * Test for basic valid Algorand transaction payload shape
+ * @category Core
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function isTransactionPayload(txnPayload) {
+  var isTxn = v8n().schema({
+    txn: v8n().object()
+  });
+  return isTxn.test(txnPayload);
+}
 var core = {
-  algoAddress: algoAddress
+  assetIndex: assetIndex,
+  algoAddress: algoAddress,
+  algoTxn: algoTxn,
+  assetCreateParams: assetCreateParams,
+  assetConfigureParams: assetConfigureParams,
+  isAlgorandAddress: isAlgorandAddress,
+  isTransactionId: isTransactionId,
+  isAssetIndex: isAssetIndex,
+  isTransactionPayload: isTransactionPayload
 };
 
 // v8n should use context instead of a global variable
@@ -803,30 +860,448 @@ function unitName(unitName) {
 function assetUrl(url) {
   return v8n().string().maxByteLength(32).test(url);
 }
-/**
- * Validate asset index value
- * @category Assets
- * @param {number}
- * @returns {boolean}
- */
-
-function assetIndex(assetIndex) {
-  return v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(assetIndex);
-}
 var assets = {
   assetTotalIssuance: assetTotalIssuance,
   assetDecimalPlaces: assetDecimalPlaces,
   defaultFrozen: defaultFrozen,
-  assetIndex: assetIndex,
   assetName: assetName,
   unitName: unitName,
   assetUrl: assetUrl,
   assetMetadataHash: assetMetadataHash
 };
 
+// v8n should use context instead of a global variable
+// Details: https://github.com/imbrn/v8n/issues/28
+// @ts-ignore
+
+v8n.extend({
+  exactByteLength: exactByteLength,
+  maxByteLength: maxByteLength
+});
+/**
+ * Test sender field for a valid Algorand address
+ * @category All Transactions
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function transactionSender(senderAddr) {
+  return algoAddress.test(senderAddr);
+}
+/**
+ * Test for a valid transaction fee
+ * @category All Transactions
+ * @param {number}
+ * @returns {boolean}
+ */
+
+function transactionFee(txnFee) {
+  return v8n().number().positive().greaterThanOrEqual(1000).lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(txnFee);
+}
+/**
+ * Test for a valid first round
+ * @category All Transactions
+ * @param {number}
+ * @returns {boolean}
+ */
+
+function firstValidRound(firstValid) {
+  return v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(firstValid);
+}
+/**
+ * Test for a valid first round
+ * @category All Transactions
+ * @param {number}
+ * @returns {boolean}
+ */
+
+function lastValidRound(lastValid) {
+  return v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(lastValid);
+}
+/**
+ * Test for a valid note field
+ * @category All Transactions
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function transactionNote(note) {
+  return v8n().string().maxByteLength(1000).test(note);
+}
+/**
+ * Test for a valid genesis id
+ * @category All Transactions
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function transactionGenesisId(genesisId) {
+  return v8n().string().test(genesisId);
+}
+/**
+ * Test for a valid genesis hash
+ * @category All Transactions
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function transactionGenesisHash(genesisHash) {
+  return v8n().string().test(genesisHash);
+}
+/**
+ * Test for a valid group
+ * @category All Transactions
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function transactionGroup(genesisHash) {
+  return v8n().string().test(genesisHash);
+}
+/**
+ * Test for a valid transaction type
+ * @category All Transactions
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function transactionType(type) {
+  return v8n().string().test(type);
+}
+/**
+ * Test for a valid transaction receiver account
+ * @category Payment Transactions
+ * @param {string}
+ * @returns {boolean}
+ */
+
+function transactionReceiver(receiverAddr) {
+  return algoAddress.test(receiverAddr);
+}
+/**
+ * Test for a valid algo amount to be sent
+ * @category Payment Transactions
+ * @param {number}
+ * @returns {boolean}
+ */
+
+function transactionAmount(txnAmount) {
+  return v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(txnAmount);
+}
+/**
+ * Test for a valid algo amount to be sent
+ * @category Payment Transactions
+ * @param {number}
+ * @returns {boolean}
+ */
+
+function closeRemainderTo(address) {
+  return algoAddress.test(address);
+}
+var transactionFields = {
+  transactionSender: transactionSender,
+  transactionFee: transactionFee,
+  firstValidRound: firstValidRound,
+  lastValidRound: lastValidRound,
+  transactionNote: transactionNote,
+  transactionGenesisId: transactionGenesisId,
+  transactionGenesisHash: transactionGenesisHash,
+  transactionGroup: transactionGroup,
+  transactionType: transactionType,
+  transactionReceiver: transactionReceiver,
+  transactionAmount: transactionAmount,
+  closeRemainderTo: closeRemainderTo
+};
+
+/**
+ * Test for a valid payment transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function payment(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    amt: v8n().integer(),
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gen: v8n().string(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    note: v8n().string(),
+    rcv: algoAddress,
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.PAY)
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid close account transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function close(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    close: algoAddress,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gen: v8n().string(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    rcv: algoAddress,
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.PAY)
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid online key registration transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function registerKeyOnline(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    selkey: v8n().string(),
+    snd: algoAddress,
+    votefst: v8n().integer(),
+    votekd: v8n().integer(),
+    votekey: v8n().string(),
+    votelst: v8n().integer(),
+    type: v8n().string().exact(TRANSACTION_TYPES.KEYREG)
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid offline key registration transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function registerKeyOffline(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.KEYREG)
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid asset creation transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function assetCreate(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    apar: assetCreateParams,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.ACFG)
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid asset configuration transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function assetConfigure(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    apar: assetConfigureParams,
+    caid: assetIndex,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.ACFG)
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid asset destroy transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function assetDestroy(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    caid: assetIndex,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.ACFG)
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid asset opt-in transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function assetOptIn(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    arcv: algoAddress,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.AXFER),
+    xaid: assetIndex
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid asset transfer transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function assetTransfer(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    aamt: v8n().integer(),
+    arcv: algoAddress,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.AXFER),
+    xaid: assetIndex
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid revoke asset transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function assetRevoke(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    aamt: v8n().integer(),
+    arcv: algoAddress,
+    asnd: algoAddress,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.AXFER),
+    xaid: assetIndex
+  });
+  return isValid.test(txn.txn);
+}
+/**
+ * Test for a valid freeze asset transaction payload
+ * @category Transactions
+ * @param {object}
+ * @returns {boolean}
+ */
+
+function assetFreeze(txn) {
+  if (!isTransactionPayload(txn)) {
+    return false;
+  }
+
+  var isValid = v8n().schema({
+    afrz: v8n()["boolean"](),
+    fadd: algoAddress,
+    faid: assetIndex,
+    fee: v8n().integer(),
+    fv: v8n().integer(),
+    gh: v8n().string(),
+    lv: v8n().integer(),
+    snd: algoAddress,
+    type: v8n().string().exact(TRANSACTION_TYPES.AFRZ)
+  });
+  return isValid.test(txn.txn);
+}
+var transactions = {
+  payment: payment,
+  close: close,
+  registerKeyOnline: registerKeyOnline,
+  registerKeyOffline: registerKeyOffline,
+  assetCreate: assetCreate,
+  assetConfigure: assetConfigure,
+  assetDestroy: assetDestroy,
+  assetOptIn: assetOptIn,
+  assetTransfer: assetTransfer,
+  assetRevoke: assetRevoke,
+  assetFreeze: assetFreeze
+};
+
 var index = {
   core: core,
-  assets: assets
+  assets: assets,
+  transactionFields: transactionFields,
+  transactions: transactions
 };
 
 export default index;

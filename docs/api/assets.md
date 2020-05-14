@@ -28,9 +28,6 @@ title: assets
 <dt><a href="#assetUrl">assetUrl(url)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Validate asset url when creating an asset</p>
 </dd>
-<dt><a href="#assetIndex">assetIndex(assetIndex)</a> ⇒ <code>boolean</code></dt>
-<dd><p>Validate asset index value</p>
-</dd>
 </dl>
 
 <a name="assetTotalIssuance"></a>
@@ -116,16 +113,4 @@ Validate asset url when creating an asset
 | Param | Type |
 | --- | --- |
 | url | <code>string</code> | 
-
-<a name="assetIndex"></a>
-
-## assetIndex(assetIndex) ⇒ <code>boolean</code>
-Validate asset index value
-
-**Kind**: global function  
-**Category**: Assets  
-
-| Param | Type |
-| --- | --- |
-| assetIndex | <code>number</code> | 
 
