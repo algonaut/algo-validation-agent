@@ -17,9 +17,7 @@ export const assetTotal = v8n()
 
 export const assetDefaultFrozen = v8n().boolean();
 
-export const assetMetadataHash = v8n()
-  .string()
-  .maxByteLength(32);
+export const assetMetadataHash = v8n().string();
 
 export const assetName = v8n()
   .string()
@@ -38,6 +36,8 @@ export const assetIndex = v8n()
   .positive()
   .lessThanOrEqual(Number.MAX_SAFE_INTEGER);
 
+export const freezeState = v8n().boolean();
+
 export default {
   assetIndex,
   assetDecimals,
@@ -46,5 +46,6 @@ export default {
   assetMetadataHash,
   assetName,
   assetUnitName,
-  assetURL
+  assetURL,
+  freezeState
 };

@@ -41,8 +41,6 @@ it('Validates transaction fee', () => {
   expect(transactionFee('12345')).toEqual(false);
 });
 
-test.todo('check if valid rounds are strings or numeric in the algo js SDK');
-
 it('Validates first valid round', () => {
   expect(firstValidRound(Number.MAX_SAFE_INTEGER)).toEqual(true);
   expect(firstValidRound(Number.MAX_SAFE_INTEGER + 1)).toEqual(false);
@@ -72,15 +70,12 @@ it('Validates genesis id field', () => {
   expect(transactionGenesisId(BETANET_GENESIS_ID)).toEqual(true);
 });
 
-test.todo('Docs say 32 byte length, but all the hashes are larger');
-
 it('Validates genesis hash field', () => {
   expect(transactionGenesisHash(MAINNET_GENESIS_HASH)).toEqual(true);
   expect(transactionGenesisHash(TESTNET_GENESIS_HASH)).toEqual(true);
   expect(transactionGenesisHash(BETANET_GENESIS_HASH)).toEqual(true);
 });
 
-test.todo('validate group with exact 32-byte string');
 it('Validates group', () => {
   expect(transactionGroup(MAINNET_GENESIS_HASH)).toEqual(true);
 });

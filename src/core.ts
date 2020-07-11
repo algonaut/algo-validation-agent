@@ -1,4 +1,3 @@
-import v8n from 'v8n';
 import rules from './rules';
 
 /**
@@ -21,21 +20,7 @@ export function isTransactionId(txId: string) {
   return rules.algoTxn.test(txId);
 }
 
-/**
- * Test for basic valid Algorand transaction payload shape
- * @category Core
- * @param {object}
- * @returns {boolean}
- */
-export function isTransactionPayload(txnPayload: object) {
-  const isTxn = v8n().schema({
-    txn: v8n().object()
-  });
-  return isTxn.test(txnPayload);
-}
-
 export default {
   isAlgorandAddress,
-  isTransactionId,
-  isTransactionPayload
+  isTransactionId
 };

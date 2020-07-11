@@ -1,21 +1,27 @@
 import v8n from 'v8n';
 import rules from './rules';
-import { isTransactionPayload } from './core';
 import { TRANSACTION_TYPES } from './utils/constants';
 
+// Fields that are optional for any txn
 const TXN_OPTIONAL_FIELDS = {
-  genesisID: v8n().optional(v8n().string()),
-  fee: v8n().optional(v8n().integer()),
-  note: v8n().optional(v8n().string()),
-  lease: v8n().optional(v8n().string()),
-  group: v8n().optional(v8n().string()),
+  genesisID: v8n().optional(rules.genesisID),
+  fee: v8n().optional(rules.fee),
+  note: v8n().optional(rules.note),
+  lease: v8n().optional(rules.lease),
+  group: v8n().optional(rules.group),
   reKeyTo: v8n().optional(rules.algoAddress)
 };
 
+// Fields required for any txn
+const TXN_REQUIRED_FIELDS = {
+  firstRound: rules.firstRound,
+  lastRound: rules.lastRound,
+  genesisHash: rules.genesisHash
+};
+
+// Standard checks for all transactions
 function standardTxnValidation(txn: TransactionPayload) {
-  const roundsValid = v8n()
-    .lessThan(txn.txn.lastRound)
-    .test(txn.txn.firstRound);
+  const roundsValid = txn.lastRound > txn.firstRound;
   return roundsValid;
 }
 
@@ -26,24 +32,18 @@ function standardTxnValidation(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function payment(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
-  // Pay transaction
   const PAY_TXN_SCHEMA = v8n().schema({
     to: v8n().optional(rules.algoAddress),
-    amount: v8n().optional(v8n().integer()),
-    firstRound: v8n().integer(),
-    lastRound: v8n().integer(),
+    amount: v8n().optional(rules.amount),
     from: rules.algoAddress,
-    genesisHash: v8n().string(),
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.PAY),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
 
-  return PAY_TXN_SCHEMA.test(txn.txn) && standardTxnValidation(txn);
+  return PAY_TXN_SCHEMA.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -53,27 +53,20 @@ export function payment(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function close(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const CLOSE_TXN_SCHEMA = v8n().schema({
     closeRemainderTo: rules.algoAddress,
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
     to: rules.algoAddress,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.PAY),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
   // No closing and sending from the same address
-  const isNotSameAddress = txn.txn.closeRemainderTo !== txn.txn.from;
+  const isNotSameAddress = txn.closeRemainderTo !== txn.from;
   return (
-    CLOSE_TXN_SCHEMA.test(txn.txn) &&
-    standardTxnValidation(txn) &&
-    isNotSameAddress
+    CLOSE_TXN_SCHEMA.test(txn) && standardTxnValidation(txn) && isNotSameAddress
   );
 }
 
@@ -84,33 +77,23 @@ export function close(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function registerKeyOnline(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
-    selectionKey: v8n().string(),
+    selectionKey: rules.selectionKey,
     from: rules.algoAddress,
-    voteFirst: v8n()
-      .integer()
-      .greaterThan(0),
-    voteKeyDilution: v8n().integer(),
-    voteKey: v8n().string(),
-    voteLast: v8n().integer(),
+    voteFirst: rules.voteFirst,
+    voteKeyDilution: rules.voteKeyDilution,
+    voteKey: rules.voteKey,
+    voteLast: rules.voteLast,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.KEYREG),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
 
-  // TODO: voteKey, voteKeyDilution, selectionKey
-
   // Vote first must be less than vote last
-  const isNotSameAddress = txn.txn.voteFirst < txn.txn.voteLast;
-
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  const isNotSameAddress = txn.voteFirst < txn.voteLast;
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -120,20 +103,15 @@ export function registerKeyOnline(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function registerKeyOffline(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.KEYREG),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -143,31 +121,26 @@ export function registerKeyOffline(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function assetCreate(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
     assetMetadataHash: v8n().string(),
-    assetName: v8n().string(),
-    assetURL: v8n().string(),
+    assetName: rules.assetName,
+    assetURL: rules.assetURL,
     assetClawback: rules.algoAddress,
-    assetDecimals: v8n().integer(),
+    assetDecimals: rules.assetDecimals,
     assetFreeze: rules.algoAddress,
     assetManager: rules.algoAddress,
     assetReserve: rules.algoAddress,
-    assetTotal: v8n().integer(),
-    assetUnitName: v8n().string(),
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
+    assetTotal: rules.assetTotal,
+    assetUnitName: rules.assetUnitName,
     from: rules.algoAddress,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.ACFG),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
 
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -177,26 +150,21 @@ export function assetCreate(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function assetConfigure(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
     assetClawback: rules.algoAddress,
     assetFreeze: rules.algoAddress,
     assetManager: rules.algoAddress,
     assetReserve: rules.algoAddress,
     assetIndex: rules.assetIndex,
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.ACFG),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
 
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -206,21 +174,16 @@ export function assetConfigure(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function assetDestroy(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
     assetIndex: rules.assetIndex,
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.ACFG),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -230,22 +193,17 @@ export function assetDestroy(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function assetOptIn(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
     to: rules.algoAddress,
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.AXFER),
     assetIndex: rules.assetIndex,
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -255,23 +213,18 @@ export function assetOptIn(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function assetTransfer(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
-    amount: v8n().integer(),
+    amount: rules.amount,
     to: rules.algoAddress,
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
+    assetIndex: rules.assetIndex,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.AXFER),
-    assetIndex: rules.assetIndex,
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -281,24 +234,19 @@ export function assetTransfer(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function assetRevoke(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
-    amount: v8n().integer(),
+    amount: rules.amount,
     to: rules.algoAddress,
     assetRevocationTarget: rules.algoAddress,
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
+    assetIndex: rules.assetIndex,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.AXFER),
-    assetIndex: rules.assetIndex,
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 /**
@@ -308,23 +256,18 @@ export function assetRevoke(txn: TransactionPayload) {
  * @returns {boolean}
  */
 export function assetFreeze(txn: TransactionPayload) {
-  if (!isTransactionPayload(txn)) {
-    return false;
-  }
   const isValid = v8n().schema({
-    freezeState: v8n().boolean(),
+    freezeState: rules.freezeState,
     freezeAccount: rules.algoAddress,
     assetIndex: rules.assetIndex,
-    firstRound: v8n().integer(),
-    genesisHash: v8n().string(),
-    lastRound: v8n().integer(),
     from: rules.algoAddress,
     type: v8n()
       .string()
       .exact(TRANSACTION_TYPES.AFRZ),
+    ...TXN_REQUIRED_FIELDS,
     ...TXN_OPTIONAL_FIELDS
   });
-  return isValid.test(txn.txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn);
 }
 
 export default {

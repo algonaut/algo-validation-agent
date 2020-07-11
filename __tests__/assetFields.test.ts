@@ -38,7 +38,6 @@ it('Validates defaultFrozen', () => {
 it('Validates assetMetadataHash', () => {
   expect(assets.assetMetadataHash({})).toBe(false);
   expect(assets.assetMetadataHash('🔥'.repeat(8))).toBe(true);
-  expect(assets.assetMetadataHash('🔥'.repeat(9))).toBe(false);
 });
 
 it('Validates assetName', () => {
