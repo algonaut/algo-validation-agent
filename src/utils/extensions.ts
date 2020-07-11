@@ -14,3 +14,7 @@ export const base32CharsOnly = () => (val: string) => {
   const b32_regex = new RegExp(/^[A-Z2-7]*$/);
   return b32_regex.test(val);
 };
+
+export const isUint8Array = () => (val: Uint8Array) => {
+  return val.constructor === Uint8Array;
+};
