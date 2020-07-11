@@ -1,4 +1,6 @@
 interface TransactionPayload {
+  to: String;
+  from: String;
   genesisId: String;
   lease: String;
   fee: Number;

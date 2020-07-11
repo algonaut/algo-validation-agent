@@ -6,7 +6,7 @@ import rules from './rules';
  * @param {string}
  * @returns {boolean}
  */
-export function transactionSender(senderAddr: string) {
+export function from(senderAddr: string) {
   return rules.algoAddress.test(senderAddr);
 }
 
@@ -16,7 +16,7 @@ export function transactionSender(senderAddr: string) {
  * @param {number}
  * @returns {boolean}
  */
-export function transactionFee(txnFee: number) {
+export function fee(txnFee: number) {
   return rules.fee.test(txnFee);
 }
 
@@ -26,7 +26,7 @@ export function transactionFee(txnFee: number) {
  * @param {number}
  * @returns {boolean}
  */
-export function firstValidRound(firstValid: number) {
+export function firstRound(firstValid: number) {
   return rules.firstRound.test(firstValid);
 }
 
@@ -36,7 +36,7 @@ export function firstValidRound(firstValid: number) {
  * @param {number}
  * @returns {boolean}
  */
-export function lastValidRound(lastValid: number) {
+export function lastRound(lastValid: number) {
   return rules.lastRound.test(lastValid);
 }
 
@@ -46,7 +46,7 @@ export function lastValidRound(lastValid: number) {
  * @param {string}
  * @returns {boolean}
  */
-export function transactionNote(note: string) {
+export function note(note: string) {
   return rules.note.test(note);
 }
 
@@ -56,7 +56,7 @@ export function transactionNote(note: string) {
  * @param {string}
  * @returns {boolean}
  */
-export function transactionGenesisId(genesisId: string) {
+export function genesisID(genesisId: string) {
   return rules.genesisID.test(genesisId);
 }
 
@@ -66,7 +66,7 @@ export function transactionGenesisId(genesisId: string) {
  * @param {string}
  * @returns {boolean}
  */
-export function transactionGenesisHash(genesisHash: string) {
+export function genesisHash(genesisHash: string) {
   return rules.genesisHash.test(genesisHash);
 }
 
@@ -76,7 +76,7 @@ export function transactionGenesisHash(genesisHash: string) {
  * @param {string}
  * @returns {boolean}
  */
-export function transactionGroup(genesisHash: string) {
+export function group(genesisHash: string) {
   return rules.group.test(genesisHash);
 }
 
@@ -86,7 +86,7 @@ export function transactionGroup(genesisHash: string) {
  * @param {string}
  * @returns {boolean}
  */
-export function transactionType(type: string) {
+export function type(type: string) {
   return rules.type.test(type);
 }
 
@@ -96,7 +96,7 @@ export function transactionType(type: string) {
  * @param {string}
  * @returns {boolean}
  */
-export function transactionReceiver(receiverAddr: string) {
+export function to(receiverAddr: string) {
   return rules.algoAddress.test(receiverAddr);
 }
 
@@ -106,7 +106,7 @@ export function transactionReceiver(receiverAddr: string) {
  * @param {number}
  * @returns {boolean}
  */
-export function transactionAmount(txnAmount: number) {
+export function amount(txnAmount: number) {
   return rules.amount.test(txnAmount);
 }
 
@@ -121,16 +121,16 @@ export function closeRemainderTo(address: number) {
 }
 
 export default {
-  transactionSender,
-  transactionFee,
-  firstValidRound,
-  lastValidRound,
-  transactionNote,
-  transactionGenesisId,
-  transactionGenesisHash,
-  transactionGroup,
-  transactionType,
-  transactionReceiver,
-  transactionAmount,
+  from,
+  fee,
+  firstRound,
+  lastRound,
+  note,
+  genesisID,
+  genesisHash,
+  group,
+  type,
+  to,
+  amount,
   closeRemainderTo
 };

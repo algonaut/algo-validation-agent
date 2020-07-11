@@ -6,7 +6,7 @@ import rules from './rules';
  * @param {number}
  * @returns {boolean}
  */
-export function isAssetIndex(assetId: number) {
+export function assetIndex(assetId: number) {
   return rules.assetIndex.test(assetId);
 }
 
@@ -16,7 +16,7 @@ export function isAssetIndex(assetId: number) {
  * @param {number}
  * @returns {boolean}
  */
-export function assetTotalIssuance(total: number) {
+export function assetTotal(total: number) {
   return rules.assetTotal.test(total);
 }
 
@@ -26,7 +26,7 @@ export function assetTotalIssuance(total: number) {
  * @param {number}
  * @returns {boolean}
  */
-export function assetDecimalPlaces(decimals: number) {
+export function assetDecimals(decimals: number) {
   return rules.assetDecimals.test(decimals);
 }
 
@@ -36,7 +36,7 @@ export function assetDecimalPlaces(decimals: number) {
  * @param {boolean}
  * @returns {boolean}
  */
-export function defaultFrozen(defaultFrozen: boolean) {
+export function assetDefaultFrozen(defaultFrozen: boolean) {
   return rules.assetDefaultFrozen.test(defaultFrozen);
 }
 
@@ -66,7 +66,7 @@ export function assetName(assetName: string) {
  * @param {string}
  * @returns {boolean}
  */
-export function unitName(unitName: string) {
+export function assetUnitName(unitName: string) {
   return rules.assetUnitName.test(unitName);
 }
 
@@ -76,17 +76,17 @@ export function unitName(unitName: string) {
  * @param {string}
  * @returns {boolean}
  */
-export function assetUrl(url: string) {
+export function assetURL(url: string) {
   return rules.assetURL.test(url);
 }
 
 export default {
-  isAssetIndex,
-  assetTotalIssuance,
-  assetDecimalPlaces,
-  defaultFrozen,
+  assetIndex,
+  assetTotal,
+  assetDecimals,
+  assetDefaultFrozen,
   assetName,
-  unitName,
-  assetUrl,
+  assetUnitName,
+  assetURL,
   assetMetadataHash
 };
