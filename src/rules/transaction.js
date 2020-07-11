@@ -35,6 +35,8 @@ export const amount = v8n()
   .lessThanOrEqual(Number.MAX_SAFE_INTEGER)
   .greaterThanOrEqual(0);
 
+export const closeRemainderTo = algoAddress;
+
 export const voteFirst = v8n()
   .integer()
   .greaterThan(0);
@@ -71,6 +73,7 @@ export default {
   lastRound,
   genesisHash,
   amount,
+  closeRemainderTo,
   voteFirst,
   voteKeyDilution,
   voteLast,

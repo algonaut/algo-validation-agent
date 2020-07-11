@@ -117,7 +117,7 @@ export function transactionAmount(txnAmount: number) {
  * @returns {boolean}
  */
 export function closeRemainderTo(address: number) {
-  return rules.algoAddress.test(address);
+  return rules.closeRemainderTo.test(address);
 }
 
 export default {
