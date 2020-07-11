@@ -1,11 +1,14 @@
-import v8n from 'v8n';
-import { maxByteLength } from './utils/extensions';
+import rules from './rules';
 
-// For full typing support on the extend function,
-// v8n should use context instead of a global variable
-// Details: https://github.com/imbrn/v8n/issues/28
-// @ts-ignore
-v8n.extend({ maxByteLength });
+/**
+ * Test for a valid Algorand asset index
+ * @category Core
+ * @param {number}
+ * @returns {boolean}
+ */
+export function isAssetIndex(assetId: number) {
+  return rules.assetIndex.test(assetId);
+}
 
 /**
  * Validate total issuance amount when creating an asset
@@ -14,10 +17,7 @@ v8n.extend({ maxByteLength });
  * @returns {boolean}
  */
 export function assetTotalIssuance(total: number) {
-  return v8n()
-    .integer()
-    .between(1, Number.MAX_SAFE_INTEGER)
-    .test(total);
+  return rules.assetTotal.test(total);
 }
 
 /**
@@ -27,10 +27,7 @@ export function assetTotalIssuance(total: number) {
  * @returns {boolean}
  */
 export function assetDecimalPlaces(decimals: number) {
-  return v8n()
-    .integer()
-    .between(0, 19)
-    .test(decimals);
+  return rules.assetDecimals.test(decimals);
 }
 
 /**
@@ -40,9 +37,7 @@ export function assetDecimalPlaces(decimals: number) {
  * @returns {boolean}
  */
 export function defaultFrozen(defaultFrozen: boolean) {
-  return v8n()
-    .boolean()
-    .test(defaultFrozen);
+  return rules.assetDefaultFrozen.test(defaultFrozen);
 }
 
 /**
@@ -52,10 +47,7 @@ export function defaultFrozen(defaultFrozen: boolean) {
  * @returns {boolean}
  */
 export function assetMetadataHash(hash: string) {
-  return v8n()
-    .string()
-    .maxByteLength(32)
-    .test(hash);
+  return rules.assetMetadataHash.test(hash);
 }
 
 /**
@@ -65,10 +57,7 @@ export function assetMetadataHash(hash: string) {
  * @returns {boolean}
  */
 export function assetName(assetName: string) {
-  return v8n()
-    .string()
-    .maxByteLength(32)
-    .test(assetName);
+  return rules.assetName.test(assetName);
 }
 
 /**
@@ -78,10 +67,7 @@ export function assetName(assetName: string) {
  * @returns {boolean}
  */
 export function unitName(unitName: string) {
-  return v8n()
-    .string()
-    .maxByteLength(8)
-    .test(unitName);
+  return rules.assetUnitName.test(unitName);
 }
 
 /**
@@ -91,13 +77,11 @@ export function unitName(unitName: string) {
  * @returns {boolean}
  */
 export function assetUrl(url: string) {
-  return v8n()
-    .string()
-    .maxByteLength(32)
-    .test(url);
+  return rules.assetURL.test(url);
 }
 
 export default {
+  isAssetIndex,
   assetTotalIssuance,
   assetDecimalPlaces,
   defaultFrozen,

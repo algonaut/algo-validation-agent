@@ -1,3 +1,4 @@
+import { TextEncoder } from 'fastestsmallesttextencoderdecoder';
 import { VALID_ALGORAND_ADDRESS } from '../src/utils/constants';
 import {
   exactByteLength,

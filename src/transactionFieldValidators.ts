@@ -1,6 +1,6 @@
 import v8n from 'v8n';
+import rules from './rules';
 import { exactByteLength, maxByteLength } from './utils/extensions';
-import { algoAddress, assetIndex } from './core';
 
 // For full typing support on the extend function,
 // v8n should use context instead of a global variable
@@ -15,7 +15,7 @@ v8n.extend({ exactByteLength, maxByteLength });
  * @returns {boolean}
  */
 export function transactionSender(senderAddr: string) {
-  return algoAddress.test(senderAddr);
+  return rules.algoAddress.test(senderAddr);
 }
 
 /**
@@ -129,7 +129,7 @@ export function transactionType(type: string) {
  * @returns {boolean}
  */
 export function transactionReceiver(receiverAddr: string) {
-  return algoAddress.test(receiverAddr);
+  return rules.algoAddress.test(receiverAddr);
 }
 
 /**
@@ -153,7 +153,7 @@ export function transactionAmount(txnAmount: number) {
  * @returns {boolean}
  */
 export function closeRemainderTo(address: number) {
-  return algoAddress.test(address);
+  return rules.algoAddress.test(address);
 }
 
 export default {

@@ -11,7 +11,7 @@ import {
   transactionType,
   transactionReceiver,
   closeRemainderTo
-} from '../src/transactionFields';
+} from '../src/transactionFieldValidators';
 import {
   VALID_ALGORAND_ADDRESS,
   MAINNET_GENESIS_ID,

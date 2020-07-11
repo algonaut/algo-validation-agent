@@ -1,4 +1,12 @@
-import assets from '../src/assets';
+import assets from '../src/assetFieldValidators';
+
+it('Validates assetIndex', () => {
+  expect(assets.isAssetIndex(1)).toBe(true);
+  expect(assets.isAssetIndex(Number.MAX_SAFE_INTEGER)).toBe(true);
+  expect(assets.isAssetIndex(Number.MAX_SAFE_INTEGER + 1)).toBe(false);
+  expect(assets.isAssetIndex(-1)).toBe(false);
+  expect(assets.isAssetIndex('1')).toBe(false);
+});
 
 it('Validates assetTotalIssuance', () => {
   expect(assets.assetTotalIssuance(0)).toBe(false);

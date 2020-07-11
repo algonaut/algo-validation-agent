@@ -1,11 +1,11 @@
 import core from './core';
-import assets from './assets';
-import transactionFields from './transactionFields';
+import assetFieldValidators from './assetFieldValidators';
+import transactionFieldValidators from './transactionFieldValidators';
 import transactions from './transactions';
 
 export default {
   core,
-  assets,
-  transactionFields,
+  assetFieldValidators,
+  transactionFieldValidators,
   transactions
 };
