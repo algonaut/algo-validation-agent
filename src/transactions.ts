@@ -93,7 +93,7 @@ export function registerKeyOnline(txn: TransactionPayload) {
 
   // Vote first must be less than vote last
   const isNotSameAddress = txn.voteFirst < txn.voteLast;
-  return isValid.test(txn) && standardTxnValidation(txn);
+  return isValid.test(txn) && standardTxnValidation(txn) && isNotSameAddress;
 }
 
 /**
