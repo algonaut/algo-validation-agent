@@ -4,39 +4,28 @@ title: core
 
 # core
 
-## Members
-
-<dl>
-<dt><a href="#assetConfigureParams">assetConfigureParams</a> ⇒ <code>boolean</code></dt>
-<dd><p>Test a string for valid Algorand address requirements</p>
-</dd>
-</dl>
-
 ## Functions
 
 <dl>
+<dt><a href="#isAlgorandAddress">isAlgorandAddress(input)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Test a string for valid Algorand address requirements</p>
+</dd>
 <dt><a href="#isTransactionId">isTransactionId(txId)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Test for a valid Algorand transaction ID</p>
 </dd>
-<dt><a href="#isAssetIndex">isAssetIndex(assetId)</a> ⇒ <code>boolean</code></dt>
-<dd><p>Test for a valid Algorand asset index</p>
-</dd>
-<dt><a href="#isTransactionPayload">isTransactionPayload(txnPayload)</a> ⇒ <code>boolean</code></dt>
-<dd><p>Test for basic valid Algorand transaction payload shape</p>
-</dd>
 </dl>
 
-<a name="assetConfigureParams"></a>
+<a name="isAlgorandAddress"></a>
 
-## assetConfigureParams ⇒ <code>boolean</code>
+## isAlgorandAddress(input) ⇒ <code>boolean</code>
 Test a string for valid Algorand address requirements
 
-**Kind**: global variable  
+**Kind**: global function  
 **Category**: Core  
 
 | Param | Type |
 | --- | --- |
-|  | <code>string</code> | 
+| input | <code>string</code> | 
 
 <a name="isTransactionId"></a>
 
@@ -49,28 +38,4 @@ Test for a valid Algorand transaction ID
 | Param | Type |
 | --- | --- |
 | txId | <code>string</code> | 
-
-<a name="isAssetIndex"></a>
-
-## isAssetIndex(assetId) ⇒ <code>boolean</code>
-Test for a valid Algorand asset index
-
-**Kind**: global function  
-**Category**: Core  
-
-| Param | Type |
-| --- | --- |
-| assetId | <code>number</code> | 
-
-<a name="isTransactionPayload"></a>
-
-## isTransactionPayload(txnPayload) ⇒ <code>boolean</code>
-Test for basic valid Algorand transaction payload shape
-
-**Kind**: global function  
-**Category**: Core  
-
-| Param | Type |
-| --- | --- |
-| txnPayload | <code>object</code> | 
 

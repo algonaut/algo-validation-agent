@@ -13,6 +13,7 @@ import {
 } from '../src/transactions';
 import {
   VALID_PAY_TRANSACTION,
+  INVALID_ROUND_TRANSACTION,
   VALID_CLOSE_TRANSACTION,
   REGISTER_KEY_ONLINE_TRANSACTION,
   REGISTER_KEY_OFFLINE_TRANSACTION,
@@ -28,6 +29,10 @@ import {
 it('Validates pay transaction payload', () => {
   expect(payment(VALID_PAY_TRANSACTION)).toBe(true);
   expect(payment({ foo: {} })).toBe(false);
+});
+
+it('Validates that firstRound comes before lastRound', () => {
+  expect(payment(INVALID_ROUND_TRANSACTION)).toBe(false);
 });
 
 it('Validates close transaction payload', () => {

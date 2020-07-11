@@ -1,38 +1,31 @@
-/// <reference path="../src/typings/v8n.d.ts" />
 declare const _default: {
     core: {
-        assetIndex: import("v8n").Validation;
-        algoAddress: import("v8n").Validation;
-        algoTxn: import("v8n").Validation;
-        assetCreateParams: import("v8n").Validation;
-        assetConfigureParams: import("v8n").Validation;
         isAlgorandAddress: typeof import("./core").isAlgorandAddress;
         isTransactionId: typeof import("./core").isTransactionId;
-        isAssetIndex: typeof import("./core").isAssetIndex;
-        isTransactionPayload: typeof import("./core").isTransactionPayload;
     };
-    assets: {
-        assetTotalIssuance: typeof import("./assets").assetTotalIssuance;
-        assetDecimalPlaces: typeof import("./assets").assetDecimalPlaces;
-        defaultFrozen: typeof import("./assets").defaultFrozen;
-        assetName: typeof import("./assets").assetName;
-        unitName: typeof import("./assets").unitName;
-        assetUrl: typeof import("./assets").assetUrl;
-        assetMetadataHash: typeof import("./assets").assetMetadataHash;
+    assetFieldValidators: {
+        assetIndex: typeof import("./assetFieldValidators").assetIndex;
+        assetTotal: typeof import("./assetFieldValidators").assetTotal;
+        assetDecimals: typeof import("./assetFieldValidators").assetDecimals;
+        assetDefaultFrozen: typeof import("./assetFieldValidators").assetDefaultFrozen;
+        assetName: typeof import("./assetFieldValidators").assetName;
+        assetUnitName: typeof import("./assetFieldValidators").assetUnitName;
+        assetURL: typeof import("./assetFieldValidators").assetURL;
+        assetMetadataHash: typeof import("./assetFieldValidators").assetMetadataHash;
     };
-    transactionFields: {
-        transactionSender: typeof import("./transactionFields").transactionSender;
-        transactionFee: typeof import("./transactionFields").transactionFee;
-        firstValidRound: typeof import("./transactionFields").firstValidRound;
-        lastValidRound: typeof import("./transactionFields").lastValidRound;
-        transactionNote: typeof import("./transactionFields").transactionNote;
-        transactionGenesisId: typeof import("./transactionFields").transactionGenesisId;
-        transactionGenesisHash: typeof import("./transactionFields").transactionGenesisHash;
-        transactionGroup: typeof import("./transactionFields").transactionGroup;
-        transactionType: typeof import("./transactionFields").transactionType;
-        transactionReceiver: typeof import("./transactionFields").transactionReceiver;
-        transactionAmount: typeof import("./transactionFields").transactionAmount;
-        closeRemainderTo: typeof import("./transactionFields").closeRemainderTo;
+    transactionFieldValidators: {
+        from: typeof import("./transactionFieldValidators").from;
+        fee: typeof import("./transactionFieldValidators").fee;
+        firstRound: typeof import("./transactionFieldValidators").firstRound;
+        lastRound: typeof import("./transactionFieldValidators").lastRound;
+        note: typeof import("./transactionFieldValidators").note;
+        genesisID: typeof import("./transactionFieldValidators").genesisID;
+        genesisHash: typeof import("./transactionFieldValidators").genesisHash;
+        group: typeof import("./transactionFieldValidators").group;
+        type: typeof import("./transactionFieldValidators").type;
+        to: typeof import("./transactionFieldValidators").to;
+        amount: typeof import("./transactionFieldValidators").amount;
+        closeRemainderTo: typeof import("./transactionFieldValidators").closeRemainderTo;
     };
     transactions: {
         payment: typeof import("./transactions").payment;

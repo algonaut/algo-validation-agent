@@ -3,7 +3,8 @@ import {
   exactByteLength,
   maxByteLength,
   minByteLength,
-  base32CharsOnly
+  base32CharsOnly,
+  isUint8Array
 } from '../src/utils/extensions';
 
 it('validates exact byte length', () => {
@@ -36,4 +37,10 @@ it('validates base32 string', () => {
   expect(base32CharsOnly()(validBase32Padding)).toBe(false);
   expect(base32CharsOnly()(validBase32NoPadding)).toBe(true);
   expect(base32CharsOnly()(VALID_ALGORAND_ADDRESS)).toBe(true);
+});
+
+it('validates Uint8Array', () => {
+  const testEncodedString = Uint8Array.from('testing');
+  expect(isUint8Array()(testEncodedString)).toBe(true);
+  expect(isUint8Array()('testing')).toBe(false);
 });

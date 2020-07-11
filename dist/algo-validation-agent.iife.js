@@ -1,6 +1,55 @@
 var AlgoValidationAgent = (function () {
   'use strict';
 
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      if (i % 2) {
+        ownKeys(Object(source), true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    return target;
+  }
+
   var classCallCheck = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -669,10 +718,10 @@ var AlgoValidationAgent = (function () {
     };
   }
 
-  var a="undefined"==typeof global?"undefined"===typeof self?{}:self:global,m=String.fromCharCode,n={}.toString,q=a.SharedArrayBuffer,t=q?n.call(q):"",u=a.Uint8Array,w=u?n.call(ArrayBuffer.prototype):"",x=a.Buffer;try{!x&&a.require&&(x=a.require("Buffer"));var y=x.prototype,z=n.call(y);}catch(c){}var A=!!u&&!x,B=/[\x80-\uD7ff\uDC00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]?/g,C=new Uint16Array(32),E=!x||!!u&&u.prototype.isPrototypeOf(y),G=F.prototype;function I(c){var b=c&&c.buffer||c,e=n.call(b);if(e!==w&&e!==z&&e!==t&&"[object ArrayBuffer]"!==e&&void 0!==c)throw TypeError("Failed to execute 'decode' on 'TextDecoder': The provided value is not of type '(ArrayBuffer or ArrayBufferView)'");c=E?new u(b):b||[];e=b="";for(var d=0,r=c.length|0,D=r-32|0,v,f,g=0,p=0,k,h=0,l=-1;d<r;){for(v=d<=D?32:r-d|0;h<v;d=d+1|0,h=h+1|0){f=c[d]&255;switch(f>>4){case 15:k=c[d=d+1|0]&255;if(2!==k>>6||247<f){d=d-1|0;break}g=(f&7)<<6|k&63;p=5;f=256;case 14:k=c[d=d+1|0]&
-  255,g<<=6,g|=(f&15)<<6|k&63,p=2===k>>6?p+4|0:24,f=f+256&768;case 13:case 12:k=c[d=d+1|0]&255,g<<=6,g|=(f&31)<<6|k&63,p=p+7|0,d<r&&2===k>>6&&g>>p&&1114112>g?(f=g,g=g-65536|0,0<=g&&(l=(g>>10)+55296|0,f=(g&1023)+56320|0,31>h?(C[h]=l,h=h+1|0,l=-1):(k=l,l=f,f=k))):(f>>=8,d=d-f-1|0,f=65533),g=p=0,v=d<=D?32:r-d|0;default:C[h]=f;continue;case 11:case 10:case 9:case 8:}C[h]=65533;}e+=m(C[0],C[1],C[2],C[3],C[4],C[5],C[6],C[7],C[8],C[9],C[10],C[11],C[12],C[13],C[14],C[15],C[16],C[17],C[18],C[19],C[20],C[21],
-  C[22],C[23],C[24],C[25],C[26],C[27],C[28],C[29],C[30],C[31]);32>h&&(e=e.slice(0,h-32|0));if(d<r){if(C[0]=l,h=~l>>>31,l=-1,e.length<b.length)continue}else -1!==l&&(e+=m(l));b+=e;e="";}return b}function J(c){var b=c.charCodeAt(0)|0;if(55296<=b&&56319>=b)if(c=c.charCodeAt(1)|0,56320<=c&&57343>=c){if(b=(b<<10)+c-56613888|0,65535<b)return m(240|b>>18,128|b>>12&63,128|b>>6&63,128|b&63)}else b=65533;return 2047>=b?m(192|b>>6,128|b&63):m(224|b>>12,128|b>>6&63,128|b&63)}function F(){}
-  function K(c){c=void 0===c?"":(""+c).replace(B,J);for(var b=c.length|0,e=A?new u(b):x.allocUnsafe?x.allocUnsafe(b):new x(b),d=0;d<b;d=d+1|0)e[d]=c.charCodeAt(d)|0;return e}G.encode=K;function L(c,b){var e=c[b];return function(){return e.apply(c,arguments)}}var M=a.TextDecoder,N=a.TextEncoder;var TextEncoder=N||F,decode=M?L(new M,"decode"):I,encode=N?L(new N,"encode"):K;
+  var e="undefined"==typeof global?"undefined"===typeof self?{}:self:global,f=String.fromCharCode,g={}.toString,h=e.SharedArrayBuffer,k=h?g.call(h):"",m=e.Uint8Array,n=m?g.call(ArrayBuffer.prototype):"",p=e.Buffer;try{!p&&e.require&&(p=e.require("Buffer"));var q=p.prototype,r=g.call(q);}catch(b){}var t=!!m&&!p,v=!p||!!m&&m.prototype.isPrototypeOf(q),x=w.prototype;
+  function y(b){var a=b.charCodeAt(0),c=1114112,d=0,u=b.length|0,l="";switch(a>>>4){case 12:case 13:c=(a&31)<<6|b.charCodeAt(1)&63;d=128>c?0:2;break;case 14:c=(a&15)<<12|(b.charCodeAt(1)&63)<<6|b.charCodeAt(2)&63;d=2048>c?0:3;break;case 15:30===a>>>3&&(c=(a&7)<<18|(b.charCodeAt(1)&63)<<12|(b.charCodeAt(2)&63)<<6|b.charCodeAt(3),d=65536>c?0:4);}d&&(u<d?d=0:65536>c?l=f(c):1114112>c?(c=c-65664|0,l=f((c>>>10)+55296|0,(c&1023)+56320|0)):d=0);for(;d<u;d=d+1|0)l+="\ufffd";return l}function A(b){var a=b&&b.buffer||b,c=g.call(a);if(c!==n&&c!==r&&c!==k&&"[object ArrayBuffer]"!==c&&void 0!==b)throw TypeError("Failed to execute 'decode' on 'TextDecoder': The provided value is not of type '(ArrayBuffer or ArrayBufferView)'");b=v?new m(a):a||[];a="";c=0;for(var d=b.length|0;c<d;c=c+32768|0)a+=f.apply(0,b[v?"subarray":"slice"](c,c+32768|0));return a.replace(/[\xc0-\xff][\x80-\xbf]+|[\x80-\xff]/g,y)}function B(b){var a=b.charCodeAt(0)|0;if(55296<=a&&56319>=a)if(b=b.charCodeAt(1)|0,56320<=b&&57343>=b){if(a=(a<<10)+b-56613888|0,65535<a)return f(240|a>>>18,128|a>>>12&63,128|a>>>6&63,128|a&63)}else a=65533;return 2047>=a?f(192|a>>>6,128|a&63):f(224|a>>>12,128|a>>>6&63,128|a&63)}function w(){}
+  function C(b){b=void 0===b?"":(""+b).replace(/[\x80-\uD7ff\uDC00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]?/g,B);for(var a=b.length|0,c=t?new m(a):p.allocUnsafe?p.allocUnsafe(a):new p(a),d=0;d<a;d=d+1|0)c[d]=b.charCodeAt(d)|0;return c}x.encode=C;function D(b,a){var c=b[a];return function(){return c.apply(b,arguments)}}var E=e.TextDecoder,F=e.TextEncoder;
+  var TextEncoder=F||w,decode=E?D(new E,"decode"):A,encode=F?D(new F,"encode"):C;
 
   var exactByteLength = function exactByteLength(validLength) {
     return function (val) {
@@ -689,6 +738,11 @@ var AlgoValidationAgent = (function () {
       // Algorand strips off padding and doesn't adhere to multiples of 8 length constraint
       var b32_regex = new RegExp(/^[A-Z2-7]*$/);
       return b32_regex.test(val);
+    };
+  };
+  var isUint8Array = function isUint8Array() {
+    return function (val) {
+      return val.constructor === Uint8Array;
     };
   };
 
@@ -712,25 +766,85 @@ var AlgoValidationAgent = (function () {
   });
   var algoAddress = v8n().string().exactByteLength(ALGORAND_ADDRESS_LENGTH).length(ALGORAND_ADDRESS_LENGTH).base32CharsOnly();
   var algoTxn = v8n().string().exactByteLength(ALGORAND_TRANSACTION_LENGTH).length(ALGORAND_TRANSACTION_LENGTH).base32CharsOnly();
+  var core = {
+    algoAddress: algoAddress,
+    algoTxn: algoTxn
+  };
+
+  // v8n should use context instead of a global variable
+  // Details: https://github.com/imbrn/v8n/issues/28
+  // @ts-ignore
+
+  v8n.extend({
+    maxByteLength: maxByteLength
+  });
+  var assetDecimals = v8n().integer().between(0, 19);
+  var assetTotal = v8n().integer().between(1, Number.MAX_SAFE_INTEGER);
+  var assetDefaultFrozen = v8n()["boolean"]();
+  var assetMetadataHash = v8n().string();
+  var assetName = v8n().string().maxByteLength(32);
+  var assetUnitName = v8n().string().maxByteLength(8);
+  var assetURL = v8n().string().maxByteLength(32);
   var assetIndex = v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER);
-  var assetCreateParams = v8n().schema({
-    am: v8n().string(),
-    an: v8n().string(),
-    au: v8n().string(),
-    c: algoAddress,
-    dc: v8n().integer(),
-    f: algoAddress,
-    m: algoAddress,
-    r: algoAddress,
-    t: v8n().integer(),
-    un: v8n().string()
+  var freezeState = v8n()["boolean"]();
+  var assets = {
+    assetIndex: assetIndex,
+    assetDecimals: assetDecimals,
+    assetTotal: assetTotal,
+    assetDefaultFrozen: assetDefaultFrozen,
+    assetMetadataHash: assetMetadataHash,
+    assetName: assetName,
+    assetUnitName: assetUnitName,
+    assetURL: assetURL,
+    freezeState: freezeState
+  };
+
+  // v8n should use context instead of a global variable
+  // Details: https://github.com/imbrn/v8n/issues/28
+  // @ts-ignore
+
+  v8n.extend({
+    isUint8Array: isUint8Array
   });
-  var assetConfigureParams = v8n().schema({
-    c: algoAddress,
-    f: algoAddress,
-    m: algoAddress,
-    r: algoAddress
-  });
+  var genesisID = v8n().string();
+  var lease = v8n().isUint8Array();
+  var fee = v8n().integer().positive().greaterThanOrEqual(1000).lessThanOrEqual(Number.MAX_SAFE_INTEGER);
+  var note = v8n().string().maxByteLength(1000);
+  var group = v8n().string();
+  var reKeyTo = algoAddress;
+  var firstRound = v8n().integer().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER);
+  var lastRound = v8n().integer().positive().greaterThan(0).lessThanOrEqual(Number.MAX_SAFE_INTEGER);
+  var genesisHash = v8n().string();
+  var amount = v8n().integer().lessThanOrEqual(Number.MAX_SAFE_INTEGER).greaterThanOrEqual(0);
+  var closeRemainderTo = algoAddress;
+  var voteFirst = v8n().integer().greaterThan(0);
+  var voteKeyDilution = v8n().integer().greaterThan(0);
+  var voteLast = v8n().integer().greaterThan(0);
+  var voteKey = v8n().string();
+  var selectionKey = v8n().string();
+  var type = v8n().string().passesAnyOf(v8n().equal('pay'), v8n().equal('keyreg'), v8n().equal('acfg'), v8n().equal('axfer'), v8n().equal('afrz'));
+  var transaction = {
+    genesisID: genesisID,
+    lease: lease,
+    fee: fee,
+    note: note,
+    group: group,
+    reKeyTo: reKeyTo,
+    firstRound: firstRound,
+    lastRound: lastRound,
+    genesisHash: genesisHash,
+    amount: amount,
+    closeRemainderTo: closeRemainderTo,
+    voteFirst: voteFirst,
+    voteKeyDilution: voteKeyDilution,
+    voteLast: voteLast,
+    voteKey: voteKey,
+    selectionKey: selectionKey,
+    type: type
+  };
+
+  var rules = _objectSpread2({}, core, {}, assets, {}, transaction);
+
   /**
    * Test a string for valid Algorand address requirements
    * @category Core
@@ -739,7 +853,7 @@ var AlgoValidationAgent = (function () {
    */
 
   function isAlgorandAddress(input) {
-    return algoAddress.test(input);
+    return rules.algoAddress.test(input);
   }
   /**
    * Test for a valid Algorand transaction ID
@@ -749,8 +863,13 @@ var AlgoValidationAgent = (function () {
    */
 
   function isTransactionId(txId) {
-    return algoTxn.test(txId);
+    return rules.algoTxn.test(txId);
   }
+  var core$1 = {
+    isAlgorandAddress: isAlgorandAddress,
+    isTransactionId: isTransactionId
+  };
+
   /**
    * Test for a valid Algorand asset index
    * @category Core
@@ -758,41 +877,9 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function isAssetIndex(assetId) {
-    return assetIndex.test(assetId);
+  function assetIndex$1(assetId) {
+    return rules.assetIndex.test(assetId);
   }
-  /**
-   * Test for basic valid Algorand transaction payload shape
-   * @category Core
-   * @param {object}
-   * @returns {boolean}
-   */
-
-  function isTransactionPayload(txnPayload) {
-    var isTxn = v8n().schema({
-      txn: v8n().object()
-    });
-    return isTxn.test(txnPayload);
-  }
-  var core = {
-    assetIndex: assetIndex,
-    algoAddress: algoAddress,
-    algoTxn: algoTxn,
-    assetCreateParams: assetCreateParams,
-    assetConfigureParams: assetConfigureParams,
-    isAlgorandAddress: isAlgorandAddress,
-    isTransactionId: isTransactionId,
-    isAssetIndex: isAssetIndex,
-    isTransactionPayload: isTransactionPayload
-  };
-
-  // v8n should use context instead of a global variable
-  // Details: https://github.com/imbrn/v8n/issues/28
-  // @ts-ignore
-
-  v8n.extend({
-    maxByteLength: maxByteLength
-  });
   /**
    * Validate total issuance amount when creating an asset
    * @category Assets
@@ -800,8 +887,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function assetTotalIssuance(total) {
-    return v8n().integer().between(1, Number.MAX_SAFE_INTEGER).test(total);
+  function assetTotal$1(total) {
+    return rules.assetTotal.test(total);
   }
   /**
    * Validate asset decimal places when creating an asset
@@ -810,8 +897,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function assetDecimalPlaces(decimals) {
-    return v8n().integer().between(0, 19).test(decimals);
+  function assetDecimals$1(decimals) {
+    return rules.assetDecimals.test(decimals);
   }
   /**
    * Validate defaultFrozen has a boolean value when creating an asset
@@ -820,8 +907,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function defaultFrozen(defaultFrozen) {
-    return v8n()["boolean"]().test(defaultFrozen);
+  function assetDefaultFrozen$1(defaultFrozen) {
+    return rules.assetDefaultFrozen.test(defaultFrozen);
   }
   /**
    * Validate for a metadata hash string when creating an asset
@@ -830,8 +917,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function assetMetadataHash(hash) {
-    return v8n().string().maxByteLength(32).test(hash);
+  function assetMetadataHash$1(hash) {
+    return rules.assetMetadataHash.test(hash);
   }
   /**
    * Validate asset name when creating an asset
@@ -840,8 +927,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function assetName(assetName) {
-    return v8n().string().maxByteLength(32).test(assetName);
+  function assetName$1(assetName) {
+    return rules.assetName.test(assetName);
   }
   /**
    * Validate unit name when creating an asset
@@ -850,8 +937,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function unitName(unitName) {
-    return v8n().string().maxByteLength(8).test(unitName);
+  function assetUnitName$1(unitName) {
+    return rules.assetUnitName.test(unitName);
   }
   /**
    * Validate asset url when creating an asset
@@ -860,27 +947,20 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function assetUrl(url) {
-    return v8n().string().maxByteLength(32).test(url);
+  function assetURL$1(url) {
+    return rules.assetURL.test(url);
   }
-  var assets = {
-    assetTotalIssuance: assetTotalIssuance,
-    assetDecimalPlaces: assetDecimalPlaces,
-    defaultFrozen: defaultFrozen,
-    assetName: assetName,
-    unitName: unitName,
-    assetUrl: assetUrl,
-    assetMetadataHash: assetMetadataHash
+  var assetFieldValidators = {
+    assetIndex: assetIndex$1,
+    assetTotal: assetTotal$1,
+    assetDecimals: assetDecimals$1,
+    assetDefaultFrozen: assetDefaultFrozen$1,
+    assetName: assetName$1,
+    assetUnitName: assetUnitName$1,
+    assetURL: assetURL$1,
+    assetMetadataHash: assetMetadataHash$1
   };
 
-  // v8n should use context instead of a global variable
-  // Details: https://github.com/imbrn/v8n/issues/28
-  // @ts-ignore
-
-  v8n.extend({
-    exactByteLength: exactByteLength,
-    maxByteLength: maxByteLength
-  });
   /**
    * Test sender field for a valid Algorand address
    * @category All Transactions
@@ -888,8 +968,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionSender(senderAddr) {
-    return algoAddress.test(senderAddr);
+  function from(senderAddr) {
+    return rules.algoAddress.test(senderAddr);
   }
   /**
    * Test for a valid transaction fee
@@ -898,8 +978,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionFee(txnFee) {
-    return v8n().number().positive().greaterThanOrEqual(1000).lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(txnFee);
+  function fee$1(txnFee) {
+    return rules.fee.test(txnFee);
   }
   /**
    * Test for a valid first round
@@ -908,8 +988,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function firstValidRound(firstValid) {
-    return v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(firstValid);
+  function firstRound$1(firstValid) {
+    return rules.firstRound.test(firstValid);
   }
   /**
    * Test for a valid first round
@@ -918,8 +998,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function lastValidRound(lastValid) {
-    return v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(lastValid);
+  function lastRound$1(lastValid) {
+    return rules.lastRound.test(lastValid);
   }
   /**
    * Test for a valid note field
@@ -928,8 +1008,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionNote(note) {
-    return v8n().string().maxByteLength(1000).test(note);
+  function note$1(note) {
+    return rules.note.test(note);
   }
   /**
    * Test for a valid genesis id
@@ -938,8 +1018,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionGenesisId(genesisId) {
-    return v8n().string().test(genesisId);
+  function genesisID$1(genesisId) {
+    return rules.genesisID.test(genesisId);
   }
   /**
    * Test for a valid genesis hash
@@ -948,8 +1028,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionGenesisHash(genesisHash) {
-    return v8n().string().test(genesisHash);
+  function genesisHash$1(genesisHash) {
+    return rules.genesisHash.test(genesisHash);
   }
   /**
    * Test for a valid group
@@ -958,8 +1038,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionGroup(genesisHash) {
-    return v8n().string().test(genesisHash);
+  function group$1(genesisHash) {
+    return rules.group.test(genesisHash);
   }
   /**
    * Test for a valid transaction type
@@ -968,8 +1048,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionType(type) {
-    return v8n().string().test(type);
+  function type$1(type) {
+    return rules.type.test(type);
   }
   /**
    * Test for a valid transaction receiver account
@@ -978,8 +1058,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionReceiver(receiverAddr) {
-    return algoAddress.test(receiverAddr);
+  function to(receiverAddr) {
+    return rules.algoAddress.test(receiverAddr);
   }
   /**
    * Test for a valid algo amount to be sent
@@ -988,8 +1068,8 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function transactionAmount(txnAmount) {
-    return v8n().number().positive().lessThanOrEqual(Number.MAX_SAFE_INTEGER).test(txnAmount);
+  function amount$1(txnAmount) {
+    return rules.amount.test(txnAmount);
   }
   /**
    * Test for a valid algo amount to be sent
@@ -998,24 +1078,43 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function closeRemainderTo(address) {
-    return algoAddress.test(address);
+  function closeRemainderTo$1(address) {
+    return rules.closeRemainderTo.test(address);
   }
-  var transactionFields = {
-    transactionSender: transactionSender,
-    transactionFee: transactionFee,
-    firstValidRound: firstValidRound,
-    lastValidRound: lastValidRound,
-    transactionNote: transactionNote,
-    transactionGenesisId: transactionGenesisId,
-    transactionGenesisHash: transactionGenesisHash,
-    transactionGroup: transactionGroup,
-    transactionType: transactionType,
-    transactionReceiver: transactionReceiver,
-    transactionAmount: transactionAmount,
-    closeRemainderTo: closeRemainderTo
+  var transactionFieldValidators = {
+    from: from,
+    fee: fee$1,
+    firstRound: firstRound$1,
+    lastRound: lastRound$1,
+    note: note$1,
+    genesisID: genesisID$1,
+    genesisHash: genesisHash$1,
+    group: group$1,
+    type: type$1,
+    to: to,
+    amount: amount$1,
+    closeRemainderTo: closeRemainderTo$1
   };
 
+  var TXN_OPTIONAL_FIELDS = {
+    genesisID: v8n().optional(rules.genesisID),
+    fee: v8n().optional(rules.fee),
+    note: v8n().optional(rules.note),
+    lease: v8n().optional(rules.lease),
+    group: v8n().optional(rules.group),
+    reKeyTo: v8n().optional(rules.algoAddress)
+  }; // Fields required for any txn
+
+  var TXN_REQUIRED_FIELDS = {
+    firstRound: rules.firstRound,
+    lastRound: rules.lastRound,
+    genesisHash: rules.genesisHash
+  }; // Standard checks for all transactions
+
+  function standardTxnValidation(txn) {
+    var roundsValid = txn.lastRound > txn.firstRound;
+    return roundsValid;
+  }
   /**
    * Test for a valid payment transaction payload
    * @category Transactions
@@ -1023,24 +1122,15 @@ var AlgoValidationAgent = (function () {
    * @returns {boolean}
    */
 
-  function payment(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
 
-    var isValid = v8n().schema({
-      amt: v8n().integer(),
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gen: v8n().string(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      note: v8n().string(),
-      rcv: algoAddress,
-      snd: algoAddress,
+  function payment(txn) {
+    var PAY_TXN_SCHEMA = v8n().schema(_objectSpread2({
+      to: v8n().optional(rules.algoAddress),
+      amount: v8n().optional(rules.amount),
+      from: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.PAY)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return PAY_TXN_SCHEMA.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid close account transaction payload
@@ -1050,22 +1140,15 @@ var AlgoValidationAgent = (function () {
    */
 
   function close(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      close: algoAddress,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gen: v8n().string(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      rcv: algoAddress,
-      snd: algoAddress,
+    var CLOSE_TXN_SCHEMA = v8n().schema(_objectSpread2({
+      closeRemainderTo: rules.algoAddress,
+      from: rules.algoAddress,
+      to: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.PAY)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS)); // No closing and sending from the same address
+
+    var isNotSameAddress = txn.closeRemainderTo !== txn.from;
+    return CLOSE_TXN_SCHEMA.test(txn) && standardTxnValidation(txn) && isNotSameAddress;
   }
   /**
    * Test for a valid online key registration transaction payload
@@ -1075,24 +1158,18 @@ var AlgoValidationAgent = (function () {
    */
 
   function registerKeyOnline(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      selkey: v8n().string(),
-      snd: algoAddress,
-      votefst: v8n().integer(),
-      votekd: v8n().integer(),
-      votekey: v8n().string(),
-      votelst: v8n().integer(),
+    var isValid = v8n().schema(_objectSpread2({
+      selectionKey: rules.selectionKey,
+      from: rules.algoAddress,
+      voteFirst: rules.voteFirst,
+      voteKeyDilution: rules.voteKeyDilution,
+      voteKey: rules.voteKey,
+      voteLast: rules.voteLast,
       type: v8n().string().exact(TRANSACTION_TYPES.KEYREG)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS)); // Vote first must be less than vote last
+
+    var isNotSameAddress = txn.voteFirst < txn.voteLast;
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid offline key registration transaction payload
@@ -1102,19 +1179,11 @@ var AlgoValidationAgent = (function () {
    */
 
   function registerKeyOffline(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
+    var isValid = v8n().schema(_objectSpread2({
+      from: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.KEYREG)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid asset creation transaction payload
@@ -1124,20 +1193,21 @@ var AlgoValidationAgent = (function () {
    */
 
   function assetCreate(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      apar: assetCreateParams,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
+    var isValid = v8n().schema(_objectSpread2({
+      assetMetadataHash: v8n().string(),
+      assetName: rules.assetName,
+      assetURL: rules.assetURL,
+      assetClawback: rules.algoAddress,
+      assetDecimals: rules.assetDecimals,
+      assetFreeze: rules.algoAddress,
+      assetManager: rules.algoAddress,
+      assetReserve: rules.algoAddress,
+      assetTotal: rules.assetTotal,
+      assetUnitName: rules.assetUnitName,
+      from: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.ACFG)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid asset configuration transaction payload
@@ -1147,21 +1217,16 @@ var AlgoValidationAgent = (function () {
    */
 
   function assetConfigure(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      apar: assetConfigureParams,
-      caid: assetIndex,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
+    var isValid = v8n().schema(_objectSpread2({
+      assetClawback: rules.algoAddress,
+      assetFreeze: rules.algoAddress,
+      assetManager: rules.algoAddress,
+      assetReserve: rules.algoAddress,
+      assetIndex: rules.assetIndex,
+      from: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.ACFG)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid asset destroy transaction payload
@@ -1171,20 +1236,12 @@ var AlgoValidationAgent = (function () {
    */
 
   function assetDestroy(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      caid: assetIndex,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
+    var isValid = v8n().schema(_objectSpread2({
+      assetIndex: rules.assetIndex,
+      from: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.ACFG)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid asset opt-in transaction payload
@@ -1194,21 +1251,13 @@ var AlgoValidationAgent = (function () {
    */
 
   function assetOptIn(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      arcv: algoAddress,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
+    var isValid = v8n().schema(_objectSpread2({
+      to: rules.algoAddress,
+      from: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.AXFER),
-      xaid: assetIndex
-    });
-    return isValid.test(txn.txn);
+      assetIndex: rules.assetIndex
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid asset transfer transaction payload
@@ -1218,22 +1267,14 @@ var AlgoValidationAgent = (function () {
    */
 
   function assetTransfer(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      aamt: v8n().integer(),
-      arcv: algoAddress,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
-      type: v8n().string().exact(TRANSACTION_TYPES.AXFER),
-      xaid: assetIndex
-    });
-    return isValid.test(txn.txn);
+    var isValid = v8n().schema(_objectSpread2({
+      amount: rules.amount,
+      to: rules.algoAddress,
+      from: rules.algoAddress,
+      assetIndex: rules.assetIndex,
+      type: v8n().string().exact(TRANSACTION_TYPES.AXFER)
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid revoke asset transaction payload
@@ -1243,23 +1284,15 @@ var AlgoValidationAgent = (function () {
    */
 
   function assetRevoke(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      aamt: v8n().integer(),
-      arcv: algoAddress,
-      asnd: algoAddress,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
-      type: v8n().string().exact(TRANSACTION_TYPES.AXFER),
-      xaid: assetIndex
-    });
-    return isValid.test(txn.txn);
+    var isValid = v8n().schema(_objectSpread2({
+      amount: rules.amount,
+      to: rules.algoAddress,
+      assetRevocationTarget: rules.algoAddress,
+      from: rules.algoAddress,
+      assetIndex: rules.assetIndex,
+      type: v8n().string().exact(TRANSACTION_TYPES.AXFER)
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   /**
    * Test for a valid freeze asset transaction payload
@@ -1269,22 +1302,14 @@ var AlgoValidationAgent = (function () {
    */
 
   function assetFreeze(txn) {
-    if (!isTransactionPayload(txn)) {
-      return false;
-    }
-
-    var isValid = v8n().schema({
-      afrz: v8n()["boolean"](),
-      fadd: algoAddress,
-      faid: assetIndex,
-      fee: v8n().integer(),
-      fv: v8n().integer(),
-      gh: v8n().string(),
-      lv: v8n().integer(),
-      snd: algoAddress,
+    var isValid = v8n().schema(_objectSpread2({
+      freezeState: rules.freezeState,
+      freezeAccount: rules.algoAddress,
+      assetIndex: rules.assetIndex,
+      from: rules.algoAddress,
       type: v8n().string().exact(TRANSACTION_TYPES.AFRZ)
-    });
-    return isValid.test(txn.txn);
+    }, TXN_REQUIRED_FIELDS, {}, TXN_OPTIONAL_FIELDS));
+    return isValid.test(txn) && standardTxnValidation(txn);
   }
   var transactions = {
     payment: payment,
@@ -1301,9 +1326,9 @@ var AlgoValidationAgent = (function () {
   };
 
   var index = {
-    core: core,
-    assets: assets,
-    transactionFields: transactionFields,
+    core: core$1,
+    assetFieldValidators: assetFieldValidators,
+    transactionFieldValidators: transactionFieldValidators,
     transactions: transactions
   };
 

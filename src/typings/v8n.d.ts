@@ -49,6 +49,7 @@ declare module 'v8n' {
       object(): Validation;
       schema(expected: object): Validation;
       passesAnyOf(...args: Validation[]): Validation;
+      optional(...args: Validation[]): Validation;
 
       // Custom rules
       minByteLength(min: number): Validation;
@@ -56,6 +57,7 @@ declare module 'v8n' {
       exactByteLength(expected: number): Validation;
       base32CharsOnly(): Validation;
       isTransactionPayload(expected: object): Validation;
+      isUint8Array(expected: string): Validation;
     }
     class Rule {
       constructor(
